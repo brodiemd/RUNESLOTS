@@ -40,6 +40,9 @@ h1 {
   margin: 0 10px;
   border-radius: 10px;
   font-size: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button {
@@ -84,7 +87,7 @@ button:hover {
 #youWonText {
   font-family: 'Runescape UF', sans-serif;
   color: yellow;
-  font-size: 6rem;
+  font-size: 8rem;
   margin-bottom: 10px;
 }
 

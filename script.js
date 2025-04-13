@@ -18,11 +18,6 @@ document.getElementById("spinBtn").addEventListener("click", function () {
   // Reset the used flag
   used = true;
 
-  // Set the reels to have random starting points for the animation
-  const reel1 = document.getElementById("reel1");
-  const reel2 = document.getElementById("reel2");
-  const reel3 = document.getElementById("reel3");
-
   // Function to animate the reel and show new emojis
   const spinReel = (reel) => {
     const emojis = ["🍒", "🍋", "🍇", "🍉", "🍊"];
@@ -30,16 +25,23 @@ document.getElementById("spinBtn").addEventListener("click", function () {
     reel.innerHTML = emojis[randomIndex];
   };
 
-  // Spin the reels
-  spinReel(reel1);
-  setTimeout(() => spinReel(reel2), 200);
-  setTimeout(() => spinReel(reel3), 400);
+  // Spin the reels for 3 seconds, with staggered start
+  setTimeout(() => spinReel(document.getElementById("reel1")), 0); // Left reel starts first
+  setTimeout(() => spinReel(document.getElementById("reel2")), 250); // Middle reel starts second
+  setTimeout(() => spinReel(document.getElementById("reel3")), 500); // Right reel starts last
 
-  // After the spin, show the prize
+  // Increase spin duration for more natural effect
+  setTimeout(() => {
+    spinReel(document.getElementById("reel1"));
+    setTimeout(() => spinReel(document.getElementById("reel2")), 250);
+    setTimeout(() => spinReel(document.getElementById("reel3")), 500);
+  }, 1500);
+
+  // After the spin, show the prize with a 1-second delay
   setTimeout(() => {
     const prize = prizes[Math.floor(Math.random() * prizes.length)];
     document.getElementById("prizeImage").innerHTML = prize;
     document.getElementById("resultText").style.display = "block";
     used = false;
-  }, 1000);
+  }, 3000); // Prize shows after the spin ends
 });
