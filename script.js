@@ -1,9 +1,10 @@
-const prizes = [
-  "10% Off Your Next Service",
-  "Free Garden Maintenance Add-On",
-  "Bonus Hour of Labor",
-  "Free Site Assessment",
-  "Gift Card Bonus"
+
+  const prizes = [
+  '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/800px-Armadyl_godsword_detail.webp?v=1744503474112" alt="Prize 1" />',
+  '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/1200px-Abyssal_bludgeon_detail.webp?v=1744503476834" alt="Prize 2" />',
+  '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/1200px-Abyssal_whip_detail.webp?v=1744503478978" alt="Prize 3" />',
+  '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/1200px-Old_school_bond_detail.webp?v=1744503481902" alt="Prize 4" />',
+  '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/1200px-Serpentine_helm_detail.webp?v=1744503484644" alt="Prize 5" />'
 ];
 
 const emojis = ["🍒", "🍋", "🍇", "🍉", "🍊"];
@@ -32,7 +33,7 @@ document.getElementById("spinBtn").addEventListener("click", function () {
     const prize = prizes[Math.floor(Math.random() * prizes.length)];
 
     // Display result
-    document.getElementById("resultText").textContent = `🎉 You won: ${prize} 🎉`;
+    document.getElementById("resultText").innerHTML = `🎉 You won: ${prize} 🎉`;
 
     // Prevent reuse
     used = true;

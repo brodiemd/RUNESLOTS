@@ -9,7 +9,6 @@ body {
   padding: 2rem;
 }
 
-
 .container {
   max-width: 500px;
   margin: 0 auto;
@@ -50,8 +49,21 @@ button:hover {
   background-color: #f9a825;
 }
 
-#resultText {
-  margin-top: 20px;
-  font-size: 1.2rem;
-  font-weight: bold;
+/* Ensure all prize images have the same size */
+#resultText img {
+  width: 150px; /* Set a fixed width for the prize images */
+  height: 150px; /* Set a fixed height for the prize images */
+  object-fit: contain; /* Ensure images are not stretched and maintain aspect ratio */
+  margin: 20px; /* Optional: Add some space around the images */
 }
+
+/* Center the result container on the screen */
+#resultText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh; /* Full height of the viewport */
+  flex-direction: column; /* Stack the text and image */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  padding:
