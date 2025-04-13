@@ -54,7 +54,7 @@ document.getElementById("spinBtn").addEventListener("click", function () {
           setTimeout(() => {
             // After spin stops, show prize
             const prize = prizes[Math.floor(Math.random() * prizes.length)];
-            document.getElementById("prizeImage").innerHTML = prize;
+            document.getElementById("prizeImageContainer").innerHTML = prize;
             document.getElementById("resultText").style.display = "block";
             used = false;
           }, 2000); // 2 second delay before showing prize

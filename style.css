@@ -7,12 +7,18 @@ body {
   color: #333;
   text-align: center;
   padding: 2rem;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .container {
   max-width: 500px;
-  margin: 0 auto;
-  position: relative;
+  width: 100%;
+  text-align: center;
+  position: relative; /* To allow the prize box to overlay */
 }
 
 h1 {
@@ -27,22 +33,18 @@ h1 {
   display: flex;
   justify-content: center;
   margin: 20px 0;
-  position: relative;
+  position: relative; /* To position the prize box over the slot machine */
 }
 
 .reel {
-  width: 80px;
-  height: 120px;
-  overflow: hidden;
-  position: relative;
+  font-size: 3rem;
+  padding: 20px;
   background: #fff;
   border: 3px solid #000;
   margin: 0 10px;
   border-radius: 10px;
-  font-size: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-width: 60px;
+  transition: transform 0.3s ease;
 }
 
 button {
@@ -58,40 +60,25 @@ button:hover {
   background-color: #f9a825;
 }
 
+/* Prize Box */
 #resultText {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  height: 300px;
-  width: 400px;
-  background-color: rgba(0, 0, 0, 0.7);
-  margin: 0 auto;
-  border-radius: 10px;
-  color: white;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
   padding: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#resultText img {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
-  margin: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 350px;
+  margin: 0 auto;
+  display: none; /* Hide the prize box initially */
+  position: absolute; /* Overlay over slot machine */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for perfect centering */
 }
 
 #youWonText {
-  font-family: 'Runescape UF', sans-serif;
-  color: yellow;
-  font-size: 8rem;
-  margin-bottom: 10px;
-}
-
-#adminText {
-  font-size: 1.2rem;
-  color: white;
-}
+  font-family: 'Runescape UF', sans
