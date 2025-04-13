@@ -21,82 +21,73 @@ let tries = 3;
 let isWinner = false;
 let guaranteedWinIndex = Math.floor(Math.random() * tries); // Force a win within 3 tries
 
-// Update the spin handle event listener
-document.getElementById("spinHandle").addEventListener("click", function () {
-  if (isWinner) return alert("You've already won!");
-  if (tries <= 0) return alert("No tries left!");
+// Removed the spin handle listener part
+// document.getElementById("spinHandle").addEventListener("click", function () { ... }); 
 
-  const spinSound = document.getElementById("spinSound");
-  if (spinSound) {
-    spinSound.currentTime = 0;
-    spinSound.play().catch((e) => console.warn("Sound blocked:", e));
-  }
+const resultText = document.getElementById("resultText");
+const triesLeftText = document.getElementById("triesLeftText");
 
-  const resultText = document.getElementById("resultText");
-  const triesLeftText = document.getElementById("triesLeftText");
+const reels = [
+  document.querySelector("#reel1 img"),
+  document.querySelector("#reel2 img"),
+  document.querySelector("#reel3 img")
+];
 
-  const reels = [
-    document.querySelector("#reel1 img"),
-    document.querySelector("#reel2 img"),
-    document.querySelector("#reel3 img")
-  ];
+resultText.style.display = "none";
+triesLeftText.style.display = "none";
 
-  resultText.style.display = "none";
-  triesLeftText.style.display = "none";
+reels.forEach((reel) => {
+  reel.classList.remove("glow-win", "glow-lose");
+});
 
-  reels.forEach((reel) => {
-    reel.classList.remove("glow-win", "glow-lose");
-  });
+const spinDuration = 3000;
+const intervalDuration = 100;
+const finalImages = [];
 
-  const spinDuration = 3000;
-  const intervalDuration = 100;
-  const finalImages = [];
+let forceWin = false; // Start with no forced win
 
-  let forceWin = false; // Start with no forced win
-  
-  // Set a forced win for the guaranteed try
-  if (tries - 1 === guaranteedWinIndex) {
-    forceWin = true;
-  }
+// Set a forced win for the guaranteed try
+if (tries - 1 === guaranteedWinIndex) {
+  forceWin = true;
+}
 
-  reels.forEach((reel, i) => {
-    let interval = setInterval(() => {
-      const idx = Math.floor(Math.random() * reelImages.length);
-      reel.src = reelImages[idx];
-    }, intervalDuration);
-
-    setTimeout(() => {
-      clearInterval(interval);
-
-      let finalImage;
-      if (forceWin) {
-        finalImage = reelImages[0]; // All match on forced win
-      } else {
-        finalImage = reelImages[Math.floor(Math.random() * reelImages.length)];
-      }
-
-      reel.src = finalImage;
-      finalImages[i] = finalImage;
-    }, spinDuration + i * 200);
-  });
+reels.forEach((reel, i) => {
+  let interval = setInterval(() => {
+    const idx = Math.floor(Math.random() * reelImages.length);
+    reel.src = reelImages[idx];
+  }, intervalDuration);
 
   setTimeout(() => {
-    const allMatch =
-      finalImages[0] === finalImages[1] && finalImages[1] === finalImages[2];
+    clearInterval(interval);
 
-    if (allMatch) {
-      isWinner = true;
-      const prize =
-        prizes[Math.floor(Math.random() * prizes.length)];
-      document.getElementById("prizeImageContainer").innerHTML = prize;
-      document.getElementById("youWonText").innerHTML = "You won!";
-      resultText.style.display = "block";
-      reels.forEach((reel) => reel.classList.add("glow-win"));
+    let finalImage;
+    if (forceWin) {
+      finalImage = reelImages[0]; // All match on forced win
     } else {
-      tries--;
-      triesLeftText.innerHTML = `Bad luck! You have ${tries} tries left.`;
-      triesLeftText.style.display = "block";
-      reels.forEach((reel) => reel.classList.add("glow-lose"));
+      finalImage = reelImages[Math.floor(Math.random() * reelImages.length)];
     }
-  }, spinDuration + 1000);
+
+    reel.src = finalImage;
+    finalImages[i] = finalImage;
+  }, spinDuration + i * 200);
 });
+
+setTimeout(() => {
+  const allMatch =
+    finalImages[0] === finalImages[1] && finalImages[1] === finalImages[2];
+
+  if (allMatch) {
+    isWinner = true;
+    const prize =
+      prizes[Math.floor(Math.random() * prizes.length)];
+    document.getElementById("prizeImageContainer").innerHTML = prize;
+    document.getElementById("youWonText").innerHTML = "You won!";
+    resultText.style.display = "block";
+    reels.forEach((reel) => reel.classList.add("glow-win"));
+  } else {
+    tries--;
+    triesLeftText.innerHTML = `Bad luck! You have ${tries} tries left.`;
+    triesLeftText.style.display = "block";
+    reels.forEach((reel) => reel.classList.add("glow-lose"));
+  }
+}, spinDuration + 1000);
