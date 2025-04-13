@@ -146,15 +146,14 @@ button:hover {
   padding: 5px;
 }
 
-/* Adjusting the position of the far-left and far-right reels */
-.reel:nth-child(1) { /* Far-left reel */
-  transform: translateX(20px); /* Adjust this value as needed */
+.reel-left {
+  transform: translateX(10px); /* Adjust this if needed */
 }
 
-.reel:nth-child(3) { /* Far-right reel */
-  transform: translateX(2px); /* Adjust this value as needed */
+.reel-middle {
+  transform: translateX(0px); /* Adjust this if needed */
 }
-/* Adjusting the position of the middle reel */
-.reel:nth-child(2) { /* Middle reel */
-  transform: translateX(12px); /* Adjust this value to move the middle reel */
+
+.reel-right {
+  transform: translateX(-0px); /* This will pull the far-right reel to the left */
 }
