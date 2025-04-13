@@ -1,6 +1,6 @@
 body {
   font-family: 'Arial', sans-serif;
-  background-image: url(https://cdn.glitch.global/88bda91f-7fd9-4e95-8996-659898cdae08/FINALCOVER.png?v=1744501900793);
+  background-image: url(https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/BG.png?v=1744543408540);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -22,7 +22,7 @@ body {
 
 /* Replaces the <h1> styling with image */
 .container img.header-image {
-  height: 120px; /* 100% bigger than 60px */
+  height: 60px;
   width: auto;
   margin-bottom: 30px;
   display: block;
