@@ -17,9 +17,9 @@ body {
 
 /* RuneSlots Logo */
 header img.header-image {
-  height: 250px;
+  height: 300px;
   width: auto;
-  margin-bottom: 200px;
+  margin-bottom: 250px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -80,22 +80,22 @@ header img.header-image {
   box-shadow: none !important;
 }
 
-button {
-  padding: 12px 30px;
-  font-size: 1.3rem;
-  font-family: 'Runescape UF', sans-serif;
-  background-color: #caa93f;
-  border: 2px solid #6e4b1f;
-  border-radius: 6px;
+/* Spin Handle Styling */
+.spin-handle {
+  width: 100px; /* Adjust to the size of your handle image */
+  height: auto;
   cursor: pointer;
-  color: #000;
-  text-shadow: 1px 1px #fff;
-  margin-top: 20px;
-  box-shadow: 0 3px #6e4b1f;
+  position: absolute;
+  right: -10px; /* Keep it at the right side, you can change this value */
+  bottom: -50%; /* Adjust this value to move the handle higher or lower */
+  transition: transform 0.3s ease;
+  transform-origin: top center; /* Keeps the pivot point at the top of the handle for smooth animation */
 }
 
-button:hover {
-  background-color: #ffcc00;
+
+/* Pulled down effect */
+.spin-handle.pulled {
+  transform: translateY(15px); /* Moves it down when clicked */
 }
 
 /* Prize Interface - Centered on the screen and positioned in front */

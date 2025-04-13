@@ -21,7 +21,8 @@ let tries = 3;
 let isWinner = false;
 let guaranteedWinIndex = Math.floor(Math.random() * tries); // Force a win within 3 tries
 
-document.getElementById("spinBtn").addEventListener("click", function () {
+// Update the spin handle event listener
+document.getElementById("spinHandle").addEventListener("click", function () {
   if (isWinner) return alert("You've already won!");
   if (tries <= 0) return alert("No tries left!");
 
