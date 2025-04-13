@@ -14,14 +14,23 @@ const reelImages = [
   "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1311-skillslayer.PNG?v=1744525716797"
 ];
 
-let used = false;
+let spinCount = 0;
+const maxSpins = 3;
+let hasWon = false;
 
 document.getElementById("spinBtn").addEventListener("click", function () {
-  if (used) return alert("You already spun!");  // Prevent further spins if already used
-  used = true;
+  if (hasWon) {
+    alert("You've already won! No more spins.");
+    return;
+  }
+
+  if (spinCount >= maxSpins) {
+    alert("You've used all your spins!");
+    return;
+  }
 
   const resultText = document.getElementById("resultText");
-  resultText.style.display = "none";  // Hide result text before spinning
+  resultText.style.display = "none";
 
   const spinSound = document.getElementById("spinSound");
   spinSound.play();
@@ -32,31 +41,47 @@ document.getElementById("spinBtn").addEventListener("click", function () {
     document.querySelector("#reel3 img")
   ];
 
-  let spinDuration = 3000;  // Total spin time in milliseconds
-  let intervalDuration = 100;  // Speed of the emoji change
+  let spinDuration = 3000;
+  let intervalDuration = 100;
 
   const spin = (reel) => {
-    const idx = Math.floor(Math.random() * reelImages.length);  // Get a random index from reelImages
-    reel.src = reelImages[idx];  // Set the reel's image
+    const idx = Math.floor(Math.random() * reelImages.length);
+    reel.src = reelImages[idx];
   };
 
-  // Ensure all reels stop on the same image
   const finalImage = reelImages[Math.floor(Math.random() * reelImages.length)];
 
   reels.forEach((reel, i) => {
-    let interval = setInterval(() => spin(reel), intervalDuration);  // Start spinning the reels
-
-    // Stop the spinning after the spin duration + delays for each reel
+    let interval = setInterval(() => spin(reel), intervalDuration);
     setTimeout(() => {
       clearInterval(interval);
-      reel.src = finalImage;  // Set the final image for each reel
-    }, spinDuration + i * 200);  // Add delays for staggered effect
+      reel.src = finalImage;
+    }, spinDuration + i * 200);
   });
 
-  // Once the reels stop spinning, display the prize
   setTimeout(() => {
-    const prize = prizes[Math.floor(Math.random() * prizes.length)];
-    document.getElementById("prizeImageContainer").innerHTML = prize;
-    resultText.style.display = "block";  // Show the result text
-  }, spinDuration + 1000);  // Wait for spin to finish before showing prize
+    const shouldWin = Math.random() < 0.3 || spinCount === maxSpins - 1;
+    const counter = document.getElementById("spinCounter");
+
+    if (shouldWin) {
+      hasWon = true;
+      const prize = prizes[Math.floor(Math.random() * prizes.length)];
+      document.getElementById("prizeImageContainer").innerHTML = prize;
+      resultText.style.display = "block";
+
+      if (counter) {
+        counter.textContent = "🎉 You won!";
+      }
+    } else {
+      spinCount++;
+      const triesLeft = maxSpins - spinCount;
+
+      if (counter) {
+        counter.textContent = `Bad luck! You have ${triesLeft} ${triesLeft === 1 ? "try" : "tries"} left`;
+      }
+
+      document.getElementById("prizeImageContainer").innerHTML = "";
+      resultText.style.display = "none";
+    }
+  }, spinDuration + 1000);
 });
