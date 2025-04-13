@@ -75,10 +75,34 @@ header img.header-image {
   margin: 0 auto;
 }
 
-/* Removed glow styles */
-.glow-win,
+/* Shake animation */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+/* Green glow on win */
+@keyframes glowGreen {
+  0% { box-shadow: 0 0 10px green, 0 0 20px green, 0 0 30px green; }
+  100% { box-shadow: 0 0 20px lightgreen, 0 0 30px lightgreen, 0 0 50px green; }
+}
+
+/* Red glow on loss */
+@keyframes glowRed {
+  0% { box-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red; }
+  100% { box-shadow: 0 0 20px lightcoral, 0 0 30px lightcoral, 0 0 50px red; }
+}
+
+/* Glow effects */
+.glow-win {
+  animation: glowGreen 1s ease-in-out forwards;
+}
+
 .glow-lose {
-  box-shadow: none !important;
+  animation: glowRed 1s ease-in-out forwards;
 }
 
 /* Prize Interface - Centered on the screen and positioned in front */

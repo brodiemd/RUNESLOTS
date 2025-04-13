@@ -27,9 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isWinner) return alert("You've already won!");
     if (tries <= 0) return alert("No tries left!");
 
+    // Play spin sound
     const spinSound = document.getElementById("spinSound");
     if (spinSound) {
-      spinSound.currentTime = 0;
+      spinSound.currentTime = 0; // Reset the sound to the beginning
       spinSound.play().catch((e) => console.warn("Sound blocked:", e));
     }
 
@@ -47,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     reels.forEach((reel) => {
       reel.classList.remove("glow-win", "glow-lose");
+      reel.classList.remove("shake");
     });
 
     const spinDuration = 3000;
@@ -80,12 +82,16 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("prizeImageContainer").innerHTML = prize;
         document.getElementById("youWonText").innerHTML = "You won!";
         resultText.style.display = "block";
-        reels.forEach((reel) => reel.classList.add("glow-win"));
+        reels.forEach((reel) => {
+          reel.classList.add("glow-win");
+        });
       } else {
         tries--;
         triesLeftText.innerHTML = `Bad luck! You have ${tries} tries left.`;
         triesLeftText.style.display = "block";
-        reels.forEach((reel) => reel.classList.add("glow-lose"));
+        reels.forEach((reel) => {
+          reel.classList.add("glow-lose", "shake");
+        });
       }
     }, spinDuration + 1000);
   });
