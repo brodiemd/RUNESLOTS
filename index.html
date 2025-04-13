@@ -1,37 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://fonts.cdnfonts.com/css/runescape-uf" rel="stylesheet">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lucky Spin</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slot Machine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Runescape+UF&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>Spin to Win!</h1>
-
-    <div class="slot-machine-wrapper">
-      <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/SLOT.png?v=1744522098661" class="slot-machine-frame" alt="Slot Machine Frame">
-      <div class="slot-machine">
+    <h1>Spin to Win</h1>
+    <div class="slot-machine">
+      <div class="reel-container">
         <div class="reel" id="reel1">🍒</div>
         <div class="reel" id="reel2">🍋</div>
-        <div class="reel" id="reel3">🍇</div>
+        <div class="reel" id="reel3">🍊</div>
       </div>
     </div>
-
-    <button id="spinBtn">SPIN</button>
-
+    <button id="spinButton">SPIN</button>
     <div id="resultText">
-      <div id="youWonText">You Won!</div>
+      <p id="youWonText">You Won!</p>
       <div id="prizeImageContainer">
         <img id="prizeImage" src="" alt="Prize">
-      </div>
-      <div id="adminText">Please send a screenshot to the Admin</div>
-    </div>
-  </div>
-
-  <audio id="spinSound" src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/spin-sound.mp3?v=1744520197713"></audio>
-  <script src="script.js"></script>
-</body>
-</html>
+      </
