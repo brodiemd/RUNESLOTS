@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 500px;
   width: 100%;
   text-align: center;
   position: relative;
@@ -27,15 +27,14 @@ h1 {
   font-size: 400%;
   text-shadow: 2px 2px 5px black;
   margin-bottom: 30px;
-  position: relative;
-  z-index: 2;
 }
 
+/* Slot machine positioning */
 .slot-machine-wrapper {
   position: relative;
-  width: 600px;
-  height: 700px;
-  margin: 0 auto;
+  width: 300px;
+  height: 320px;
+  margin: 0 auto 20px;
 }
 
 .slot-machine-frame {
@@ -43,17 +42,17 @@ h1 {
   top: 0;
   left: 0;
   width: 100%;
-  transform: scale(2); /* Double size */
+  height: auto;
   z-index: 0;
   pointer-events: none;
 }
 
 .slot-machine {
   position: absolute;
-  top: 255px;
-  left: 105px;
-  width: 390px;
-  height: auto;
+  top: 87px;
+  left: 25px;
+  width: 250px;
+  height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,31 +60,25 @@ h1 {
 }
 
 .reel {
-  font-size: 3rem;
-  padding: 20px;
+  font-size: 2.5rem;
   background: #fff;
-  border: 3px solid #000;
-  margin: 0 10px;
-  border-radius: 10px;
-  min-width: 60px;
-  height: 80px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  width: 65px;
+  height: 65px;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: inset 0 0 5px #999;
 }
 
 button {
-  position: absolute;
-  bottom: 48px;
-  left: 50%;
-  transform: translateX(-50%);
   padding: 10px 20px;
   font-size: 1.2rem;
   background-color: #fbbc04;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  z-index: 2;
 }
 
 button:hover {
@@ -95,26 +88,26 @@ button:hover {
 /* Prize Box */
 #resultText {
   display: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  flex-direction: column;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 20px;
   border-radius: 10px;
   width: 80%;
   max-width: 350px;
+  margin-top: 20px;
+  z-index: 10;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 3;
 }
 
 #youWonText {
   font-family: 'Runescape UF', sans-serif;
   color: yellow;
-  font-size: 150%;
+  font-size: 200%;
   margin-bottom: 20px;
   text-shadow: 2px 2px 5px black;
 }
