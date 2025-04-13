@@ -1,54 +1,37 @@
-/* Load Runescape font via CDN */
-@import url('https://fonts.cdnfonts.com/css/runescape-uf');
-
-/* Style the Spin to Win heading */
-.title {
-  font-family: 'Runescape UF', sans-serif;
-  color: yellow;
-  font-size: 300%; /* 200% larger than normal */
-  text-shadow: 2px 2px 5px black;
-  margin-bottom: 30px;
-}
-
-/* Style the "You've won!" text */
-.winner-text {
-  font-family: 'Runescape UF', sans-serif;
-  color: yellow;
-  font-size: 300%; /* 200% larger than normal */
-  text-shadow: 2px 2px 5px black;
-  margin-top: 20px;
-}
-
-/* Additional general styling for the rest of the game */
+/* General body styles */
 body {
   font-family: 'Arial', sans-serif;
-  background-image: url(https://cdn.glitch.global/88bda91f-7fd9-4e95-8996-659898cdae08/FINALCOVER.png?v=1744501900793);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background-image: url(https://cdn.glitch.global/88bda91f-7fd9-4e95-8996-659898cdae08/FINALCOVER.png?v=1744501900793); /* Add your image URL here */
+  background-size: cover; /* This ensures the image covers the whole background */
+  background-position: center; /* Centers the image */
+  background-attachment: fixed; /* Keeps the background fixed when scrolling */
   color: #333;
   text-align: center;
   padding: 2rem;
+  height: 100vh; /* Make sure the body fills the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Slot machine container */
 .container {
   max-width: 500px;
-  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  position: relative;
 }
 
-.logo {
-  width: 150px;
-  margin-bottom: 20px;
-}
-
+/* Slot machine reels styling */
 .slot-machine {
   display: flex;
   justify-content: center;
   margin: 20px 0;
 }
 
+/* Individual reels */
 .reel {
-  font-size: 2.5rem; /* Slightly smaller to fit your request */
+  font-size: 3rem;
   padding: 20px;
   background: #fff;
   border: 3px solid #000;
@@ -58,6 +41,7 @@ body {
   transition: transform 0.3s ease;
 }
 
+/* Spin button styling */
 button {
   padding: 10px 20px;
   font-size: 1.2rem;
@@ -71,21 +55,56 @@ button:hover {
   background-color: #f9a825;
 }
 
+/* Result container styling */
 #resultText {
-  display: flex;
+  display: none; /* Initially hidden */
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100vh;
   flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
   padding: 20px;
   margin-top: 20px;
+  position: absolute; /* To overlay on top of slot machine */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers it on the screen */
+  z-index: 10;
+  border-radius: 10px;
+  max-width: 400px; /* Limit the maximum width */
+  width: auto;
 }
 
+/* Resize prize image */
 #resultText img {
-  width: 300px;
-  height: 300px;
+  width: 250px; /* Adjust width to fit the size you want */
+  height: 250px; /* Adjust height to fit the size you want */
   object-fit: contain;
-  margin: 20px;
+  margin: 10px;
+}
+
+/* Styling for text inside the prize pop-up */
+#resultText p {
+  font-family: 'Runescape UF', sans-serif;
+  color: yellow;
+  font-size: 300%; /* Increased by 100% */
+  text-shadow: 2px 2px 5px black;
+  margin-top: 10px;
+}
+
+/* Admin message styling */
+#adminText {
+  font-family: 'Arial', sans-serif;
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 15px;
+}
+
+/* Title styling */
+h1 {
+  font-family: 'Runescape UF', sans-serif;
+  color: yellow;
+  font-size: 200%;
+  text-shadow: 2px 2px 5px black;
+  margin-bottom: 30px;
 }
