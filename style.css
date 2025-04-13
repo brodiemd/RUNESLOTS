@@ -1,0 +1,223 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url(https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/BG.png?v=1744543408540);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* RuneSlots Logo */
+header img.header-image {
+  height: 300px;
+  width: auto;
+  margin-bottom: 200px; /* Adjusted to compensate for moving slot machine up */
+  display: block;
+  margin-left: auto;
+  margin-right: 12px;
+  filter: drop-shadow(2px 2px 8px black);
+}
+
+.slot-machine {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  margin-top: -20px; /* Moves the slot machine and reels up */
+}
+
+/* ✅ Slot Machine Background (Image Replaced) */
+.slot-machine .slot-background {
+  position: absolute;
+  top: -25px;
+  left: 10px;
+  width: 110%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(3.5);
+  transform-origin: center;
+  z-index: -1;
+  pointer-events: none;
+  content: url("https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/SLOTBOX3.png?v=1744554733826");
+}
+
+/* Reels Container with Black Background and Brown Border */
+.reels-container {
+  background-color: black;
+  border: 5px solid #8B4513; /* Brown border */
+  padding: 10px; /* Reduced padding for neatness */
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Individual Reels */
+.reel {
+  width: 80px;
+  height: 80px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  transition: transform 0.3s ease;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.reel img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: none;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Shake animation */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+/* Green glow on win */
+@keyframes glowGreen {
+  0% { box-shadow: 0 0 10px green, 0 0 20px green, 0 0 30px green; }
+  100% { box-shadow: 0 0 20px lightgreen, 0 0 30px lightgreen, 0 0 50px green; }
+}
+
+/* Red glow on loss */
+@keyframes glowRed {
+  0% { box-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red; }
+  100% { box-shadow: 0 0 20px lightcoral, 0 0 30px lightcoral, 0 0 50px red; }
+}
+
+/* Glow effects */
+.glow-win {
+  animation: glowGreen 1s ease-in-out forwards;
+}
+
+.glow-lose {
+  animation: glowRed 1s ease-in-out forwards;
+}
+
+/* Prize Interface - Centered on the screen and positioned in front */
+#resultText {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 30px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+  border: 3px ridge #caa93f;
+  box-shadow: 0 0 15px #000;
+  z-index: 9999;
+}
+
+#youWonText {
+  font-family: 'Runescape UF', sans-serif;
+  color: #ffcc00;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px black;
+}
+
+#prizeImageContainer {
+  margin-bottom: 20px;
+}
+
+#adminText {
+  font-family: 'Arial', sans-serif;
+  color: white;
+  font-size: 1.2rem;
+}
+
+#prizeImageContainer img {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  margin: 10px auto;
+  border: 2px solid #ffcc00;
+  border-radius: 10px;
+  background-color: #2a2a2a;
+  padding: 5px;
+}
+
+/* Reel Positioning */
+.reel-left {
+  transform: translateX(10px);
+}
+
+.reel-middle {
+  transform: translateX(0px);
+}
+
+.reel.reel-right {
+  transform: translateX(-12px);
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+  .slot-machine {
+    top: 40%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .slot-machine {
+    top: 30%;
+  }
+}
+
+/* Spin Button Styling */
+#spinButton {
+  margin-top: 80px;
+  padding: 15px 40px;
+  font-family: 'Runescape UF', sans-serif;
+  font-size: 1.5rem;
+  background: linear-gradient(to bottom, #ffe680, #caa93f);
+  color: #000;
+  border: 3px ridge #8a6d1d;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+#spinButton:hover {
+  background: linear-gradient(to bottom, #fff199, #e6c75d);
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(255, 255, 0, 0.5);
+}
+
+#spinButton:active {
+  transform: scale(0.95);
+  background: linear-gradient(to bottom, #caa93f, #8a6d1d);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
