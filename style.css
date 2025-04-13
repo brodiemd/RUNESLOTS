@@ -6,13 +6,13 @@ body {
   background-attachment: fixed;
   color: #fff;
   text-align: center;
-  padding: 2rem;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden; /* Prevents scrolling */
 }
 
 /* RuneSlots Logo */
@@ -24,13 +24,21 @@ header img.header-image {
   margin-left: auto;
   margin-right: auto;
   filter: drop-shadow(2px 2px 8px black);
+  position: fixed; /* Fixed position */
+  top: 10%; /* Adjust the distance from the top */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Exactly center the logo */
 }
 
+/* Slot Machine */
 .slot-machine {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: fixed; /* Fixed positioning */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for exact centering */
   background: none;
   border: none;
   padding: 0;
@@ -85,13 +93,13 @@ header img.header-image {
   width: 100px; /* Adjust to the size of your handle image */
   height: auto;
   cursor: pointer;
-  position: absolute;
-  right: -10px; /* Keep it at the right side, you can change this value */
-  bottom: -50%; /* Adjust this value to move the handle higher or lower */
+  position: fixed; /* Use fixed positioning for better responsiveness */
+  right: 30.5vw; /* Use viewport width for dynamic right positioning */
+  bottom: 52vh; /* Use viewport height for dynamic bottom positioning */
   transition: transform 0.3s ease;
   transform-origin: top center; /* Keeps the pivot point at the top of the handle for smooth animation */
+  z-index: 10; /* Make sure it's above other elements */
 }
-
 
 /* Pulled down effect */
 .spin-handle.pulled {
@@ -155,4 +163,28 @@ header img.header-image {
 
 .reel.reel-right {
   transform: translateX(-12px);
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+  .spin-handle {
+    right: 5vw; /* Adjust for smaller screens */
+    bottom: 15vh; /* Adjust for smaller screens */
+  }
+
+  .slot-machine {
+    top: 40%; /* Adjust slot machine position */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .spin-handle {
+    right: 5vw;
+    bottom: 20vh;
+    width: 80px; /* Make handle smaller on small screens */
+  }
+
+  .slot-machine {
+    top: 30%; /* Adjust slot machine position */
+  }
 }
