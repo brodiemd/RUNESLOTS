@@ -17,11 +17,11 @@ const reelImages = [
 let used = false;
 
 document.getElementById("spinBtn").addEventListener("click", function () {
-  if (used) return alert("You already spun!");
+  if (used) return alert("You already spun!");  // Prevent further spins if already used
   used = true;
 
   const resultText = document.getElementById("resultText");
-  resultText.style.display = "none";
+  resultText.style.display = "none";  // Hide result text before spinning
 
   const spinSound = document.getElementById("spinSound");
   spinSound.play();
@@ -32,29 +32,31 @@ document.getElementById("spinBtn").addEventListener("click", function () {
     document.querySelector("#reel3 img")
   ];
 
-  let spinDuration = 3000;
-  let intervalDuration = 100;
+  let spinDuration = 3000;  // Total spin time in milliseconds
+  let intervalDuration = 100;  // Speed of the emoji change
 
   const spin = (reel) => {
-    const idx = Math.floor(Math.random() * reelImages.length);
-    reel.src = reelImages[idx];
+    const idx = Math.floor(Math.random() * reelImages.length);  // Get a random index from reelImages
+    reel.src = reelImages[idx];  // Set the reel's image
   };
 
+  // Ensure all reels stop on the same image
   const finalImage = reelImages[Math.floor(Math.random() * reelImages.length)];
 
   reels.forEach((reel, i) => {
-    let interval = setInterval(() => spin(reel), intervalDuration);
+    let interval = setInterval(() => spin(reel), intervalDuration);  // Start spinning the reels
 
+    // Stop the spinning after the spin duration + delays for each reel
     setTimeout(() => {
       clearInterval(interval);
-      reel.src = finalImage; // all reels get same image
-    }, spinDuration + i * 200);
+      reel.src = finalImage;  // Set the final image for each reel
+    }, spinDuration + i * 200);  // Add delays for staggered effect
   });
 
+  // Once the reels stop spinning, display the prize
   setTimeout(() => {
     const prize = prizes[Math.floor(Math.random() * prizes.length)];
     document.getElementById("prizeImageContainer").innerHTML = prize;
-    resultText.style.display = "block";
-    used = false;
-  }, spinDuration + 1000);
+    resultText.style.display = "block";  // Show the result text
+  }, spinDuration + 1000);  // Wait for spin to finish before showing prize
 });
