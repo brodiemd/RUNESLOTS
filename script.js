@@ -1,69 +1,58 @@
+const emojis = ["🍒", "🍋", "🍇", "🍉", "🔔", "⭐"];
 const prizes = [
-  '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/800px-Armadyl_godsword_detail.webp?v=1744503474112" alt="Prize 1" />',
-  '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/1200px-Abyssal_bludgeon_detail.webp?v=1744503476834" alt="Prize 2" />',
-  '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/1200px-Abyssal_whip_detail.webp?v=1744503478978" alt="Prize 3" />',
-  '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/1200px-Old_school_bond_detail.webp?v=1744503471902" alt="Prize 4" />',
-  '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/1200px-Serpentine_helm_detail.webp?v=1744503484644" alt="Prize 5" />'
+  { emoji: "🍒", image: "https://example.com/prize1.png" },
+  { emoji: "🍋", image: "https://example.com/prize2.png" },
+  { emoji: "🍇", image: "https://example.com/prize3.png" },
+  { emoji: "🍉", image: "https://example.com/prize4.png" },
+  { emoji: "🔔", image: "https://example.com/prize5.png" },
+  { emoji: "⭐", image: "https://example.com/prize6.png" }
 ];
 
-let used = false;
+const spinBtn = document.getElementById("spinBtn");
+const reel1 = document.getElementById("reel1");
+const reel2 = document.getElementById("reel2");
+const reel3 = document.getElementById("reel3");
+const resultText = document.getElementById("resultText");
+const youWonText = document.getElementById("youWonText");
+const prizeImage = document.getElementById("prizeImage");
+const spinSound = document.getElementById("spinSound");
 
-document.getElementById("spinBtn").addEventListener("click", function () {
-  if (used) return alert("You already spun!");
+function spinReel(reel, delay) {
+  return new Promise((resolve) => {
+    let count = 0;
+    const interval = setInterval(() => {
+      const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+      reel.textContent = randomEmoji;
+      count++;
+      if (count >= 20) {
+        clearInterval(interval);
+        resolve(reel.textContent);
+      }
+    }, delay);
+  });
+}
 
-  // Hide the result text before the spin
-  const resultText = document.getElementById("resultText");
+spinBtn.addEventListener("click", async () => {
   resultText.style.display = "none";
-
-  // Reset the used flag
-  used = true;
-
-  // Play the spin sound
-  const spinSound = document.getElementById("spinSound");
+  spinSound.currentTime = 0;
   spinSound.play();
 
-  // Function to animate the reel and show new emojis
-  const spinReel = (reel) => {
-    const emojis = ["🍒", "🍋", "🍇", "🍉", "🍊"];
-    const randomIndex = Math.floor(Math.random() * emojis.length);
-    reel.innerHTML = emojis[randomIndex];
-  };
+  const results = [];
 
-  // Spin the reels for 3 seconds, with staggered start
-  let spinDuration = 3000; // Total spin time in milliseconds
-  let intervalDuration = 100; // Speed of the emoji change
-  let iterations = spinDuration / intervalDuration;
+  // Spin reels sequentially with delay between them
+  results.push(await spinReel(reel1, 75));
+  results.push(await spinReel(reel2, 75));
+  results.push(await spinReel(reel3, 75));
 
-  // Start the reels with delays between each reel starting
+  // Show prize after 2 second delay
   setTimeout(() => {
-    let spinReel1Interval = setInterval(() => spinReel(document.getElementById("reel1")), intervalDuration);
-    
-    setTimeout(() => {
-      let spinReel2Interval = setInterval(() => spinReel(document.getElementById("reel2")), intervalDuration);
-      
-      setTimeout(() => {
-        let spinReel3Interval = setInterval(() => spinReel(document.getElementById("reel3")), intervalDuration);
+    const match = prizes.find(p => p.emoji === results[0]);
+    if (results.every(r => r === results[0]) && match) {
+      prizeImage.src = match.image;
+    } else {
+      prizeImage.src = "https://cdn.glitch.global/placeholder.png"; // fallback image
+    }
 
-        // Stop all reels after the spin duration
-        setTimeout(() => {
-          clearInterval(spinReel1Interval);
-          clearInterval(spinReel2Interval);
-          clearInterval(spinReel3Interval);
-
-          // After spin stops, wait for 2 seconds before showing prize
-          setTimeout(() => {
-            // After spin stops, show prize
-            const prize = prizes[Math.floor(Math.random() * prizes.length)];
-            document.getElementById("prizeImageContainer").innerHTML = prize;
-            document.getElementById("resultText").style.display = "block";
-            used = false;
-          }, 2000); // 2 second delay before showing prize
-
-        }, spinDuration);
-
-      }, 200); // Delay for the third reel (increased to 200ms)
-
-    }, 150); // Delay for the second reel (increased to 150ms)
-
-  }, 100); // Delay for the first reel (increased to 100ms)
+    resultText.style.display = "flex";
+  }, 2000);
 });

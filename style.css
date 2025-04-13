@@ -21,18 +21,32 @@ body {
   position: relative;
 }
 
-h1 {
-  font-family: 'Runescape UF', sans-serif;
-  color: yellow;
-  font-size: 400%;
-  text-shadow: 2px 2px 5px black;
-  margin-bottom: 30px;
+/* Slot machine frame and reels */
+.slot-machine-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto 20px auto;
+}
+
+.slot-machine-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .slot-machine {
+  position: absolute;
+  top: 82px;
+  left: 38px;
+  width: 225px;
   display: flex;
-  justify-content: center;
-  margin: 20px 0;
+  justify-content: space-between;
+  z-index: 1;
 }
 
 .reel {
@@ -40,9 +54,10 @@ h1 {
   padding: 20px;
   background: #fff;
   border: 3px solid #000;
-  margin: 0 10px;
+  margin: 0 5px;
   border-radius: 10px;
   min-width: 60px;
+  text-align: center;
   transition: transform 0.3s ease;
 }
 
@@ -61,24 +76,27 @@ button:hover {
 
 /* Prize Box */
 #resultText {
-  display: flex;
+  display: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 20px;
   border-radius: 10px;
   width: 80%;
   max-width: 350px;
-  margin: 0 auto;
-  display: none; /* Hide the prize box initially */
+  margin-top: 20px;
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #youWonText {
   font-family: 'Runescape UF', sans-serif;
   color: yellow;
-  font-size: 150%; /* Adjusted to a smaller size */
+  font-size: 200%;
   margin-bottom: 20px;
   text-shadow: 2px 2px 5px black;
 }
@@ -92,7 +110,7 @@ button:hover {
 }
 
 #prizeImageContainer img {
-  width: 80%; /* Make sure the image fits nicely within the box */
+  width: 80%;
   max-width: 200px;
   height: auto;
 }
@@ -102,13 +120,4 @@ button:hover {
   color: white;
   font-size: 1rem;
   margin-top: 15px;
-}
-
-/* Ensure that the prize box is centered vertically on the page */
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 100vh; /* Take up the full height */
 }
