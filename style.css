@@ -15,18 +15,27 @@ body {
 }
 
 .container {
-  max-width: 500px;
+  max-width: 600px;
   width: 100%;
   text-align: center;
   position: relative;
 }
 
-/* Slot machine frame and reels */
+h1 {
+  font-family: 'Runescape UF', sans-serif;
+  color: yellow;
+  font-size: 400%;
+  text-shadow: 2px 2px 5px black;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+}
+
 .slot-machine-wrapper {
   position: relative;
-  width: 300px;
-  height: 300px;
-  margin: 0 auto 20px auto;
+  width: 600px;
+  height: 700px;
+  margin: 0 auto;
 }
 
 .slot-machine-frame {
@@ -34,18 +43,20 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: auto;
+  transform: scale(2); /* Double size */
   z-index: 0;
   pointer-events: none;
 }
 
 .slot-machine {
   position: absolute;
-  top: 82px;
-  left: 38px;
-  width: 225px;
+  top: 255px;
+  left: 105px;
+  width: 390px;
+  height: auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   z-index: 1;
 }
 
@@ -54,20 +65,27 @@ body {
   padding: 20px;
   background: #fff;
   border: 3px solid #000;
-  margin: 0 5px;
+  margin: 0 10px;
   border-radius: 10px;
   min-width: 60px;
-  text-align: center;
-  transition: transform 0.3s ease;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 10px 20px;
   font-size: 1.2rem;
   background-color: #fbbc04;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  z-index: 2;
 }
 
 button:hover {
@@ -77,26 +95,26 @@ button:hover {
 /* Prize Box */
 #resultText {
   display: none;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  flex-direction: column;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 20px;
   border-radius: 10px;
   width: 80%;
   max-width: 350px;
-  margin-top: 20px;
-  z-index: 10;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 3;
 }
 
 #youWonText {
   font-family: 'Runescape UF', sans-serif;
   color: yellow;
-  font-size: 200%;
+  font-size: 150%;
   margin-bottom: 20px;
   text-shadow: 2px 2px 5px black;
 }
