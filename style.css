@@ -20,12 +20,13 @@ body {
   box-shadow: 0 0 20px #000;
 }
 
-h1 {
-  font-family: 'Runescape UF', sans-serif;
-  color: #ffcc00;
-  font-size: 3rem;
-  text-shadow: 2px 2px 8px black;
-  margin-bottom: 30px;
+/* Replaces the <h1> styling with image */
+.container img.header-image {
+  width: auto;
+  height: 6rem; /* double the original 3rem text size */
+  display: block;
+  margin: 0 auto 30px auto;
+  filter: drop-shadow(2px 2px 8px black);
 }
 
 .slot-machine {
@@ -124,33 +125,4 @@ button:hover {
 }
 
 #prizeImageContainer img {
-  width: 250px;
-  height: 250px;
-  object-fit: contain;
-  margin: 10px auto;
-  border: 2px solid #ffcc00;
-  border-radius: 10px;
-  background-color: #2a2a2a;
-  padding: 5px;
-}
-
-.slot-machine::before,
-.slot-machine::after {
-  content: '';
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  background-color: #caa93f;
-  border: 2px solid #6e4b1f;
-  border-radius: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.slot-machine::before {
-  left: -40px;
-}
-
-.slot-machine::after {
-  right: -40px;
-}
+  width: 250px

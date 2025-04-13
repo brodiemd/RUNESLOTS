@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://fonts.cdnfonts.com/css/runescape-uf" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lucky Spin</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.cdnfonts.com/css/runescape-uf" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
-    <h1>Spin to Win!</h1>
+    <div id="titleContainer">
+      <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/RUNESLOTS.png?v=1744540077258"
+           alt="RuneSlots Title" id="titleImage">
+    </div>
+
     <div class="slot-machine">
-  <div class="reel" id="reel1">
-    <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Air_rune_detail.webp?v=1744539387027" alt="Reel 1" />
-  </div>
-  <div class="reel" id="reel2">
-    <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Blood_rune_detail.webp?v=1744539388752" alt="Reel 2" />
-  </div>
-  <div class="reel" id="reel3">
-    <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Chaos_rune_detail.webp?v=1744539391890" alt="Reel 3" />
-  </div>
-</div>
-
+      <div class="reel" id="reel1">
+        <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Air_rune_detail.webp?v=1744539387027" alt="Rune 1">
+      </div>
+      <div class="reel" id="reel2">
+        <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Air_rune_detail.webp?v=1744539387027" alt="Rune 2">
+      </div>
+      <div class="reel" id="reel3">
+        <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Air_rune_detail.webp?v=1744539387027" alt="Rune 3">
+      </div>
     </div>
-    <button id="spinBtn">SPIN</button>
-    <p id="triesLeftText" style="display: none;"></p>
+
+    <button id="spinBtn">Spin</button>
+
+    <div id="triesLeftText" style="display: none; margin-top: 20px; font-size: 1.2rem;"></div>
+
     <div id="resultText" style="display: none;">
-      <p id="youWonText">You won!</p>
+      <div id="youWonText">You won!</div>
       <div id="prizeImageContainer"></div>
-      <p id="adminText">Please send a screenshot to the Admin.</p>
+      <div id="adminText">Please show this screen to claim your reward.</div>
     </div>
   </div>
 
-  <audio id="spinSound" src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/spin-sound.mp3?v=1744520197713" preload="auto"></audio>
-  <audio autoplay loop>
-    <source src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/09%20Sea%20Shanty%202.mp3?v=1744534868168" type="audio/mp3">
-  </audio>
+  <!-- Sound -->
+  <audio id="spinSound" src="https://cdn.glitch.global/5e10e73a-3e6f-4db4-9244-7558c4e70e2f/spin-sound.mp3?v=1744477467022" preload="auto"></audio>
+
   <script src="script.js"></script>
 </body>
 </html>

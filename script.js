@@ -17,17 +17,19 @@ const reelImages = [
   "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Water_rune_detail.webp?v=1744539412908"
 ];
 
-
 let tries = 3;
 let isWinner = false;
-const guaranteedWinTry = Math.floor(Math.random() * 3) + 1; // 1 to 3
+let guaranteedWinIndex = Math.floor(Math.random() * tries); // Force a win within 3 tries
 
 document.getElementById("spinBtn").addEventListener("click", function () {
   if (isWinner) return alert("You've already won!");
   if (tries <= 0) return alert("No tries left!");
 
   const spinSound = document.getElementById("spinSound");
-  spinSound.play();
+  if (spinSound) {
+    spinSound.currentTime = 0;
+    spinSound.play().catch((e) => console.warn("Sound blocked:", e));
+  }
 
   const resultText = document.getElementById("resultText");
   const triesLeftText = document.getElementById("triesLeftText");
@@ -41,69 +43,55 @@ document.getElementById("spinBtn").addEventListener("click", function () {
   resultText.style.display = "none";
   triesLeftText.style.display = "none";
 
-  reels.forEach(reel => {
+  reels.forEach((reel) => {
     reel.classList.remove("glow-win", "glow-lose");
   });
 
   const spinDuration = 3000;
   const intervalDuration = 100;
+  const finalImages = [];
 
-  let finalImages = [];
+  // Determine if this spin should win
+  const forceWin = tries - 1 === guaranteedWinIndex;
 
-  // Decide if this spin is the guaranteed win
-  const currentTry = 4 - tries;
-  const isThisTheWinningSpin = currentTry === guaranteedWinTry;
-
-  const winningImage = reelImages[Math.floor(Math.random() * reelImages.length)];
-
-  // Determine final images
-  if (isThisTheWinningSpin) {
-    finalImages = [winningImage, winningImage, winningImage];
-  } else {
-    // Make sure they don't match
-    while (true) {
-      finalImages = [
-        reelImages[Math.floor(Math.random() * reelImages.length)],
-        reelImages[Math.floor(Math.random() * reelImages.length)],
-        reelImages[Math.floor(Math.random() * reelImages.length)]
-      ];
-      if (!(finalImages[0] === finalImages[1] && finalImages[1] === finalImages[2])) break;
-    }
-  }
-
-  // Animate reels
   reels.forEach((reel, i) => {
     let interval = setInterval(() => {
-      const randomImg = reelImages[Math.floor(Math.random() * reelImages.length)];
-      reel.src = randomImg;
+      const idx = Math.floor(Math.random() * reelImages.length);
+      reel.src = reelImages[idx];
     }, intervalDuration);
 
     setTimeout(() => {
       clearInterval(interval);
-      reel.src = finalImages[i];
+
+      let finalImage;
+      if (forceWin) {
+        finalImage = reelImages[0]; // All match on forced win
+      } else {
+        finalImage = reelImages[Math.floor(Math.random() * reelImages.length)];
+      }
+
+      reel.src = finalImage;
+      finalImages[i] = finalImage;
     }, spinDuration + i * 200);
   });
 
   setTimeout(() => {
-    const allMatch = finalImages[0] === finalImages[1] && finalImages[1] === finalImages[2];
+    const allMatch =
+      finalImages[0] === finalImages[1] && finalImages[1] === finalImages[2];
 
     if (allMatch) {
       isWinner = true;
-      const prize = prizes[Math.floor(Math.random() * prizes.length)];
+      const prize =
+        prizes[Math.floor(Math.random() * prizes.length)];
       document.getElementById("prizeImageContainer").innerHTML = prize;
       document.getElementById("youWonText").innerHTML = "You won!";
       resultText.style.display = "block";
-      reels.forEach(reel => reel.classList.add("glow-win"));
+      reels.forEach((reel) => reel.classList.add("glow-win"));
     } else {
       tries--;
       triesLeftText.innerHTML = `Bad luck! You have ${tries} tries left.`;
       triesLeftText.style.display = "block";
-      reels.forEach(reel => reel.classList.add("glow-lose"));
-
-      if (tries === 0) {
-        document.getElementById("youWonText").innerHTML = "Out of tries!";
-        resultText.style.display = "block";
-      }
+      reels.forEach((reel) => reel.classList.add("glow-lose"));
     }
   }, spinDuration + 1000);
 });
