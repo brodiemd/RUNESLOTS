@@ -7,12 +7,16 @@ const prizes = [
 ];
 
 const reelImages = [
-  "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1279-bowstring.PNG?v=1744525703585",
-  "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1291-OSRS.PNG?v=1744525707038",
-  "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1298-Quest.PNG?v=1744525710480",
-  "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1308-skillmagic.PNG?v=1744525713862",
-  "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1311-skillslayer.PNG?v=1744525716797"
+  "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Air_rune_detail.webp?v=1744539387027",
+  "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Blood_rune_detail.webp?v=1744539388752",
+  "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Chaos_rune_detail.webp?v=1744539391890",
+  "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Cosmic_rune_detail.webp?v=1744539395178",
+  "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Earth_rune_detail.webp?v=1744539398773",
+  "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Fire_rune_detail.webp?v=1744539403762",
+  "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Nature_rune_detail.webp?v=1744539407147",
+  "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Water_rune_detail.webp?v=1744539412908"
 ];
+
 
 let tries = 3;
 let isWinner = false;
