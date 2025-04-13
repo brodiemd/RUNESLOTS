@@ -22,7 +22,7 @@ header img.header-image {
   margin-bottom: 200px; /* Adjusted to compensate for moving slot machine up */
   display: block;
   margin-left: auto;
-  margin-right: 2px;
+  margin-right: 5px;
   filter: drop-shadow(2px 2px 8px black);
 }
 
@@ -38,6 +38,7 @@ header img.header-image {
   margin-top: -20px; /* Moves the slot machine and reels up */
 }
 
+/* Slot Machine Background */
 .slot-machine .slot-background {
   position: absolute;
   top: -21px;
@@ -51,6 +52,21 @@ header img.header-image {
   pointer-events: none;
 }
 
+/* Reels Container with Black Background and Brown Border */
+.reels-container {
+  background-color: black;
+  border: 5px solid #8B4513; /* Brown border */
+  padding: 10px; /* Reduced padding for neatness */
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Keeps the space consistent */
+  position: relative;
+  z-index: 1; /* Makes sure it stays behind the reels */
+}
+
+/* Individual Reels */
 .reel {
   width: 80px;
   height: 80px;
