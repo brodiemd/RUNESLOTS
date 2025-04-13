@@ -96,3 +96,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }, spinDuration + 1000);
   });
 });
+
+window.addEventListener("DOMContentLoaded", function () {
+  const bgMusic = document.getElementById("backgroundMusic");
+
+  const playMusicOnce = () => {
+    if (bgMusic.paused) {
+      bgMusic.play();
+    }
+    // Remove this listener so it doesn't keep trying to play
+    document.removeEventListener("click", playMusicOnce);
+  };
+
+  // Wait for the first click to play music (if autoplay is blocked)
+  document.addEventListener("click", playMusicOnce);
+});

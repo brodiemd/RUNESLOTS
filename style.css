@@ -22,7 +22,7 @@ header img.header-image {
   margin-bottom: 200px; /* Adjusted to compensate for moving slot machine up */
   display: block;
   margin-left: auto;
-  margin-right: 5px;
+  margin-right: 12px;
   filter: drop-shadow(2px 2px 8px black);
 }
 
@@ -38,10 +38,10 @@ header img.header-image {
   margin-top: -20px; /* Moves the slot machine and reels up */
 }
 
-/* Slot Machine Background */
+/* ✅ Slot Machine Background (Image Replaced) */
 .slot-machine .slot-background {
   position: absolute;
-  top: -21px;
+  top: -25px;
   left: 10px;
   width: 110%;
   height: 100%;
@@ -50,6 +50,7 @@ header img.header-image {
   transform-origin: center;
   z-index: -1;
   pointer-events: none;
+  content: url("https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/SLOTBOX3.png?v=1744554733826");
 }
 
 /* Reels Container with Black Background and Brown Border */
@@ -61,9 +62,9 @@ header img.header-image {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px; /* Keeps the space consistent */
+  margin-top: 20px;
   position: relative;
-  z-index: 1; /* Makes sure it stays behind the reels */
+  z-index: 1;
 }
 
 /* Individual Reels */
@@ -123,11 +124,11 @@ header img.header-image {
 
 /* Prize Interface - Centered on the screen and positioned in front */
 #resultText {
-  display: none; /* Initially hidden */
-  position: fixed; /* Fixed position, so it stays on top */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Adjust for exact centering */
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.85);
   padding: 30px;
   border-radius: 10px;
@@ -135,7 +136,7 @@ header img.header-image {
   max-width: 400px;
   border: 3px ridge #caa93f;
   box-shadow: 0 0 15px #000;
-  z-index: 9999; /* Ensure it appears on top */
+  z-index: 9999;
 }
 
 #youWonText {
@@ -183,36 +184,40 @@ header img.header-image {
 /* Media Queries for Responsiveness */
 @media screen and (max-width: 768px) {
   .slot-machine {
-    top: 40%; /* Adjust slot machine position */
+    top: 40%;
   }
 }
 
 @media screen and (max-width: 480px) {
   .slot-machine {
-    top: 30%; /* Adjust slot machine position */
+    top: 30%;
   }
 }
 
 /* Spin Button Styling */
 #spinButton {
-  margin-top: 80px; /* Increased margin-top to move button down */
+  margin-top: 80px;
   padding: 15px 40px;
   font-family: 'Runescape UF', sans-serif;
   font-size: 1.5rem;
-  background-color: #caa93f;
+  background: linear-gradient(to bottom, #ffe680, #caa93f);
   color: #000;
   border: 3px ridge #8a6d1d;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  text-shadow: 1px 1px 0 #fff;
 }
 
 #spinButton:hover {
-  background-color: #e6c75d;
+  background: linear-gradient(to bottom, #fff199, #e6c75d);
   transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(255, 255, 0, 0.5);
 }
 
 #spinButton:active {
   transform: scale(0.95);
+  background: linear-gradient(to bottom, #caa93f, #8a6d1d);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
