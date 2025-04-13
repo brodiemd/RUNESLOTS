@@ -17,7 +17,7 @@ body {
 
 /* RuneSlots Logo */
 header img.header-image {
-  height: 180px; /* 300% larger than original size */
+  height: 180px;
   width: auto;
   margin-bottom: 30px;
   display: block;
@@ -31,11 +31,10 @@ header img.header-image {
   justify-content: center;
   align-items: center;
   position: relative;
-  /* Removed all styling to keep the background visible */
-  background: none; /* No background color */
-  border: none; /* No borders */
-  padding: 0; /* No padding */
-  box-shadow: none; /* No shadow */
+  background: none;
+  border: none;
+  padding: 0;
+  box-shadow: none;
 }
 
 .slot-machine .slot-background {
@@ -47,38 +46,38 @@ header img.header-image {
   object-fit: contain;
   transform: scale(3);
   transform-origin: center;
-  z-index: -1; /* Ensure background is behind the reels */
+  z-index: -1;
   pointer-events: none;
 }
 
 .reel {
   width: 80px;
   height: 80px;
-  background: none; /* Removed the background color */
-  border: none; /* Removed the border */
+  background: none;
+  border: none;
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 10px;
   transition: transform 0.3s ease;
-  box-shadow: none; /* Removed the black transparent box */
-  padding: 0; /* Removed any extra padding */
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .reel img {
   width: 60px;
   height: 60px;
   object-fit: contain;
-  transition: box-shadow 0.3s ease;
+  transition: none;
+  display: block;
+  margin: 0 auto;
 }
 
-.glow-win {
-  box-shadow: 0 0 20px 8px #00ff00;
-}
-
+/* Removed glow styles */
+.glow-win,
 .glow-lose {
-  box-shadow: 0 0 20px 8px red;
+  box-shadow: none !important;
 }
 
 button {
@@ -146,14 +145,15 @@ button:hover {
   padding: 5px;
 }
 
+/* Reel Positioning */
 .reel-left {
-  transform: translateX(10px); /* Adjust this if needed */
+  transform: translateX(10px);
 }
 
 .reel-middle {
-  transform: translateX(0px); /* Adjust this if needed */
+  transform: translateX(0px);
 }
 
-.reel-right {
-  transform: translateX(-0px); /* This will pull the far-right reel to the left */
+.reel.reel-right {
+  transform: translateX(-12px);
 }
