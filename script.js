@@ -6,8 +6,6 @@ const prizes = [
   '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/1200px-Serpentine_helm_detail.webp?v=1744503484644" alt="Prize 5" />'
 ];
 
-const emojis = ["🍒", "🍋", "🍇", "🍉", "🍊"];
-
 let used = false;
 
 document.getElementById("spinBtn").addEventListener("click", function () {
@@ -17,61 +15,31 @@ document.getElementById("spinBtn").addEventListener("click", function () {
   const resultText = document.getElementById("resultText");
   resultText.style.display = "none";
 
-  // Spin animation (left to right)
+  // Reset the used flag
+  used = true;
+
+  // Set the reels to have random starting points for the animation
   const reel1 = document.getElementById("reel1");
   const reel2 = document.getElementById("reel2");
   const reel3 = document.getElementById("reel3");
 
-  // Function to simulate continuous reel spinning
-  const spinReel = (reel, duration) => {
-    const emojisContainer = reel.querySelectorAll('.emoji');
-    let loopCount = 0;
-
-    const interval = setInterval(() => {
-      // Move emojis downwards, so the new ones appear at the top
-      const first = emojisContainer[0];
-      for (let i = 0; i < emojisContainer.length - 1; i++) {
-        emojisContainer[i].textContent = emojisContainer[i + 1].textContent;
-      }
-      first.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-
-      loopCount++;
-
-      // Stop the animation after a certain number of loops to simulate reel stopping
-      if (loopCount > duration) {
-        clearInterval(interval);
-      }
-    }, 100); // Update every 100ms to simulate fast spinning
+  // Function to animate the reel and show new emojis
+  const spinReel = (reel) => {
+    const emojis = ["🍒", "🍋", "🍇", "🍉", "🍊"];
+    const randomIndex = Math.floor(Math.random() * emojis.length);
+    reel.innerHTML = emojis[randomIndex];
   };
 
-  const spinTime = 5000; // Increased spin time for a more realistic feel
+  // Spin the reels
+  spinReel(reel1);
+  setTimeout(() => spinReel(reel2), 200);
+  setTimeout(() => spinReel(reel3), 400);
 
-  // Start spinning each reel with some delays
-  spinReel(reel1, spinTime / 100); // Spin for the full time
-  setTimeout(() => spinReel(reel2, spinTime / 100), 500); // Delay for middle reel
-  setTimeout(() => spinReel(reel3, spinTime / 100), 1000); // Delay for right reel
-
-  // After the spin stops, we want to randomize the final result
+  // After the spin, show the prize
   setTimeout(() => {
-    // Randomize the final results after spin finishes
-    reel1.querySelector('.emoji').textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    reel2.querySelector('.emoji').textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    reel3.querySelector('.emoji').textContent = emojis[Math.floor(Math.random() * emojis.length)];
-
-    // Choose random prize
     const prize = prizes[Math.floor(Math.random() * prizes.length)];
-
-    // Display result in the resultText container
-    document.getElementById("prizeImage").src = prize; // Set the prize image
-    document.getElementById("youWonText").innerHTML = "You won!"; // Update text
-    document.getElementById("adminText").innerHTML = "Please send a screenshot to the Admin."; // Update admin text
-
-    // Delay before prize appears
-    setTimeout(() => {
-      resultText.style.display = "flex"; // Make the prize message appear
-    }, 1000); // 1 second delay
-
-    // Prevent reuse
-    used = true;
-  }, spinTime);
+    document.getElementById("prizeImage").innerHTML = prize;
+    document.getElementById("resultText").style.display = "block";
+    used = false;
+  }, 1000);
 });
