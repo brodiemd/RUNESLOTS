@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- RuneSlots Logo Outside the Container, Centered at the Top -->
+  <!-- RuneSlots Logo -->
   <header>
     <img 
       src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/RUNESLOTS.png?v=1744540077258" 
@@ -17,7 +17,7 @@
   </header>
 
   <div class="container">
-    <!-- Slot machine with background image behind reels -->
+    <!-- Slot Machine -->
     <div class="slot-machine">
       <img 
         src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/slotbox%20(1).png?v=1744544859914" 
@@ -33,32 +33,29 @@
       <div class="reel reel-right" id="reel3">
         <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Air_rune_detail.webp?v=1744539387027" alt="Reel 3" />
       </div>
-
-      <!-- Lever -->
-      <div class="lever" id="lever">
-        <div class="lever-knob"></div>
-        <div class="lever-shaft"></div>
-      </div>
     </div>
+
+    <!-- Spin Button -->
+    <button id="spinButton">Spin</button>
 
     <!-- Tries Left -->
     <div id="triesLeftText" style="display:none; margin-top: 20px;"></div>
 
-    <!-- Result box -->
-    <div id="resultText" style="display: none;">
+    <!-- Result Box -->
+    <div id="resultText">
       <div id="youWonText">You won!</div>
       <div id="prizeImageContainer"></div>
       <div id="adminText">Show this screen to an admin to claim your prize.</div>
     </div>
 
-    <!-- Audio for spinning -->
+    <!-- Audio -->
     <audio id="spinSound" preload="auto">
       <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c126bdf2ec.mp3?filename=slot-machine-spin-102973.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
   </div>
 
-  <!-- JS -->
+  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>

@@ -152,36 +152,28 @@ header img.header-image {
   }
 }
 
-.lever {
-  width: 40px;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 10px;
+/* ... Keep all your existing CSS unchanged above ... */
+
+/* Spin Button Styling */
+#spinButton {
+  margin-top: 30px;
+  padding: 15px 40px;
+  font-family: 'Runescape UF', sans-serif;
+  font-size: 1.5rem;
+  background-color: #caa93f;
+  color: #000;
+  border: 3px ridge #8a6d1d;
+  border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.2s;
-  position: relative;
-  top: -20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.lever:active {
-  transform: rotate(10deg);
+#spinButton:hover {
+  background-color: #e6c75d;
+  transform: scale(1.05);
 }
 
-.lever-knob {
-  width: 30px;
-  height: 30px;
-  background-color: red;
-  border: 2px solid #222;
-  border-radius: 50%;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-.lever-shaft {
-  width: 10px;
-  height: 100px;
-  background-color: #555;
-  border-radius: 5px;
+#spinButton:active {
+  transform: scale(0.95);
 }
