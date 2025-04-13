@@ -21,20 +21,26 @@
         <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1298-Quest.PNG?v=1744525710480" alt="Reel 3" />
       </div>
     </div>
-    
     <button id="spinBtn">SPIN</button>
-
-    <!-- 👇 Add this line to show spin results -->
-    <p id="spinCounter">You have 3 tries</p>
-
+    
+    <!-- Result Area -->
     <div id="resultText" style="display: none;">
       <p id="youWonText">You won!</p>
       <div id="prizeImageContainer"></div>
       <p id="adminText">Please send a screenshot to the Admin.</p>
     </div>
+
+    <!-- Bad luck message -->
+    <p id="triesLeftText" style="display: none; color: red; font-weight: bold;"></p>
   </div>
 
+  <!-- Background music -->
+  <audio id="backgroundMusic" src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/09%20Sea%20Shanty%202.mp3?v=1744534868168" autoplay loop></audio>
+
+  <!-- Spin sound -->
   <audio id="spinSound" src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/spin-sound.mp3?v=1744520197713" preload="auto"></audio>
+
+  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>

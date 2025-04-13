@@ -14,74 +14,69 @@ const reelImages = [
   "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1311-skillslayer.PNG?v=1744525716797"
 ];
 
-let spinCount = 0;
-const maxSpins = 3;
-let hasWon = false;
+let tries = 3;  // Maximum tries
+let used = false;  // Check if spin is already used
+let isWinner = false;  // Check if the user has won
 
 document.getElementById("spinBtn").addEventListener("click", function () {
-  if (hasWon) {
-    alert("You've already won! No more spins.");
-    return;
-  }
+  if (used) return alert("You already spun!");  // Prevent further spins if already used
+  if (tries === 0) return alert("No tries left!");  // Block further spins if no tries left
+  if (isWinner) return alert("You've already won!");  // Block spin after winning
 
-  if (spinCount >= maxSpins) {
-    alert("You've used all your spins!");
-    return;
-  }
-
-  const resultText = document.getElementById("resultText");
-  resultText.style.display = "none";
-
+  // Play the spin sound
   const spinSound = document.getElementById("spinSound");
   spinSound.play();
 
+  // Get elements for the result text and the reels
+  const resultText = document.getElementById("resultText");
+  const triesLeftText = document.getElementById("triesLeftText");
   const reels = [
     document.querySelector("#reel1 img"),
     document.querySelector("#reel2 img"),
     document.querySelector("#reel3 img")
   ];
 
-  let spinDuration = 3000;
-  let intervalDuration = 100;
+  // Hide result text before spinning
+  resultText.style.display = "none";
 
+  // Spinning duration and speed
+  let spinDuration = 3000;  // Total spin time in milliseconds
+  let intervalDuration = 100;  // Speed of the emoji change
+
+  // Spin function for the reels
   const spin = (reel) => {
-    const idx = Math.floor(Math.random() * reelImages.length);
-    reel.src = reelImages[idx];
+    const idx = Math.floor(Math.random() * reelImages.length);  // Get a random index from reelImages
+    reel.src = reelImages[idx];  // Set the reel's image
   };
 
+  // Ensure all reels stop on the same image
   const finalImage = reelImages[Math.floor(Math.random() * reelImages.length)];
 
+  // Start the reels spinning
   reels.forEach((reel, i) => {
     let interval = setInterval(() => spin(reel), intervalDuration);
+
+    // Stop spinning after spin duration + delays for each reel
     setTimeout(() => {
       clearInterval(interval);
-      reel.src = finalImage;
-    }, spinDuration + i * 200);
+      reel.src = finalImage;  // Set the final image for each reel
+    }, spinDuration + i * 200);  // Staggered effect for reels
   });
 
+  // After the spin, display the prize or bad luck message
   setTimeout(() => {
-    const shouldWin = Math.random() < 0.3 || spinCount === maxSpins - 1;
-    const counter = document.getElementById("spinCounter");
+    const prize = Math.random() < 0.5 ? prizes[Math.floor(Math.random() * prizes.length)] : null;
 
-    if (shouldWin) {
-      hasWon = true;
-      const prize = prizes[Math.floor(Math.random() * prizes.length)];
+    // If won, display the prize
+    if (prize) {
+      isWinner = true;
       document.getElementById("prizeImageContainer").innerHTML = prize;
-      resultText.style.display = "block";
-
-      if (counter) {
-        counter.textContent = "🎉 You won!";
-      }
+      document.getElementById("youWonText").innerHTML = "You won!";
+      resultText.style.display = "block";  // Show the result text
     } else {
-      spinCount++;
-      const triesLeft = maxSpins - spinCount;
-
-      if (counter) {
-        counter.textContent = `Bad luck! You have ${triesLeft} ${triesLeft === 1 ? "try" : "tries"} left`;
-      }
-
-      document.getElementById("prizeImageContainer").innerHTML = "";
-      resultText.style.display = "none";
+      tries--;
+      triesLeftText.innerHTML = `Bad luck! You have ${tries} tries left.`;
+      triesLeftText.style.display = "block";  // Show tries left message
     }
-  }, spinDuration + 1000);
+  }, spinDuration + 1000);  // Delay prize display after spin
 });
