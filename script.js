@@ -51,8 +51,12 @@ document.getElementById("spinBtn").addEventListener("click", function () {
   const intervalDuration = 100;
   const finalImages = [];
 
-  // Determine if this spin should win
-  const forceWin = tries - 1 === guaranteedWinIndex;
+  let forceWin = false; // Start with no forced win
+  
+  // Set a forced win for the guaranteed try
+  if (tries - 1 === guaranteedWinIndex) {
+    forceWin = true;
+  }
 
   reels.forEach((reel, i) => {
     let interval = setInterval(() => {
