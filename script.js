@@ -18,6 +18,10 @@ document.getElementById("spinBtn").addEventListener("click", function () {
   // Reset the used flag
   used = true;
 
+  // Play the spin sound
+  const spinSound = document.getElementById("spinSound");
+  spinSound.play();
+
   // Function to animate the reel and show new emojis
   const spinReel = (reel) => {
     const emojis = ["🍒", "🍋", "🍇", "🍉", "🍊"];
@@ -26,22 +30,40 @@ document.getElementById("spinBtn").addEventListener("click", function () {
   };
 
   // Spin the reels for 3 seconds, with staggered start
-  setTimeout(() => spinReel(document.getElementById("reel1")), 0); // Left reel starts first
-  setTimeout(() => spinReel(document.getElementById("reel2")), 250); // Middle reel starts second
-  setTimeout(() => spinReel(document.getElementById("reel3")), 500); // Right reel starts last
+  let spinDuration = 3000; // Total spin time in milliseconds
+  let intervalDuration = 100; // Speed of the emoji change
+  let iterations = spinDuration / intervalDuration;
 
-  // Increase spin duration for more natural effect
+  // Start the reels with delays between each reel starting
   setTimeout(() => {
-    spinReel(document.getElementById("reel1"));
-    setTimeout(() => spinReel(document.getElementById("reel2")), 250);
-    setTimeout(() => spinReel(document.getElementById("reel3")), 500);
-  }, 1500);
+    let spinReel1Interval = setInterval(() => spinReel(document.getElementById("reel1")), intervalDuration);
+    
+    setTimeout(() => {
+      let spinReel2Interval = setInterval(() => spinReel(document.getElementById("reel2")), intervalDuration);
+      
+      setTimeout(() => {
+        let spinReel3Interval = setInterval(() => spinReel(document.getElementById("reel3")), intervalDuration);
 
-  // After the spin, show the prize with a 1-second delay
-  setTimeout(() => {
-    const prize = prizes[Math.floor(Math.random() * prizes.length)];
-    document.getElementById("prizeImage").innerHTML = prize;
-    document.getElementById("resultText").style.display = "block";
-    used = false;
-  }, 3000); // Prize shows after the spin ends
+        // Stop all reels after the spin duration
+        setTimeout(() => {
+          clearInterval(spinReel1Interval);
+          clearInterval(spinReel2Interval);
+          clearInterval(spinReel3Interval);
+
+          // After spin stops, wait for 2 seconds before showing prize
+          setTimeout(() => {
+            // After spin stops, show prize
+            const prize = prizes[Math.floor(Math.random() * prizes.length)];
+            document.getElementById("prizeImage").innerHTML = prize;
+            document.getElementById("resultText").style.display = "block";
+            used = false;
+          }, 2000); // 2 second delay before showing prize
+
+        }, spinDuration);
+
+      }, 200); // Delay for the third reel (increased to 200ms)
+
+    }, 150); // Delay for the second reel (increased to 150ms)
+
+  }, 100); // Delay for the first reel (increased to 100ms)
 });
