@@ -51,8 +51,8 @@ button:hover {
 
 /* Ensure all prize images have the same size */
 #resultText img {
-  width: 150px; /* Set a fixed width for the prize images */
-  height: 150px; /* Set a fixed height for the prize images */
+  width: 300px; /* Set a fixed width for the prize images */
+  height: 300px; /* Set a fixed height for the prize images */
   object-fit: contain; /* Ensure images are not stretched and maintain aspect ratio */
   margin: 20px; /* Optional: Add some space around the images */
 }

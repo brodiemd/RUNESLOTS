@@ -33,7 +33,7 @@ document.getElementById("spinBtn").addEventListener("click", function () {
     const prize = prizes[Math.floor(Math.random() * prizes.length)];
 
     // Display result
-    document.getElementById("resultText").innerHTML = `🎉 You won: ${prize} 🎉`;
+    document.getElementById("resultText").innerHTML = ` You won!: ${prize} `;
 
     // Prevent reuse
     used = true;
