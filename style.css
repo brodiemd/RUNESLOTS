@@ -18,7 +18,7 @@ body {
   max-width: 500px;
   width: 100%;
   text-align: center;
-  position: relative; /* To allow the prize box to overlay */
+  position: relative;
 }
 
 h1 {
@@ -33,7 +33,6 @@ h1 {
   display: flex;
   justify-content: center;
   margin: 20px 0;
-  position: relative; /* To position the prize box over the slot machine */
 }
 
 .reel {
@@ -74,11 +73,42 @@ button:hover {
   max-width: 350px;
   margin: 0 auto;
   display: none; /* Hide the prize box initially */
-  position: absolute; /* Overlay over slot machine */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Adjust for perfect centering */
 }
 
 #youWonText {
-  font-family: 'Runescape UF', sans
+  font-family: 'Runescape UF', sans-serif;
+  color: yellow;
+  font-size: 150%; /* Adjusted to a smaller size */
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px black;
+}
+
+#prizeImageContainer {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#prizeImageContainer img {
+  width: 80%; /* Make sure the image fits nicely within the box */
+  max-width: 200px;
+  height: auto;
+}
+
+#adminText {
+  font-family: 'Arial', sans-serif;
+  color: white;
+  font-size: 1rem;
+  margin-top: 15px;
+}
+
+/* Ensure that the prize box is centered vertically on the page */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh; /* Take up the full height */
+}
