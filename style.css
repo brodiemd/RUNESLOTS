@@ -1,9 +1,31 @@
+/* Load Runescape font via CDN */
+@import url('https://fonts.cdnfonts.com/css/runescape-uf');
+
+/* Style the Spin to Win heading */
+.title {
+  font-family: 'Runescape UF', sans-serif;
+  color: yellow;
+  font-size: 300%; /* 200% larger than normal */
+  text-shadow: 2px 2px 5px black;
+  margin-bottom: 30px;
+}
+
+/* Style the "You've won!" text */
+.winner-text {
+  font-family: 'Runescape UF', sans-serif;
+  color: yellow;
+  font-size: 300%; /* 200% larger than normal */
+  text-shadow: 2px 2px 5px black;
+  margin-top: 20px;
+}
+
+/* Additional general styling for the rest of the game */
 body {
   font-family: 'Arial', sans-serif;
-  background-image: url(https://cdn.glitch.global/88bda91f-7fd9-4e95-8996-659898cdae08/FINALCOVER.png?v=1744501900793); /* Add your image URL here */
-  background-size: cover; /* This ensures the image covers the whole background */
-  background-position: center; /* Centers the image */
-  background-attachment: fixed; /* Keeps the background fixed when scrolling */
+  background-image: url(https://cdn.glitch.global/88bda91f-7fd9-4e95-8996-659898cdae08/FINALCOVER.png?v=1744501900793);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: #333;
   text-align: center;
   padding: 2rem;
@@ -26,7 +48,7 @@ body {
 }
 
 .reel {
-  font-size: 3rem;
+  font-size: 2.5rem; /* Slightly smaller to fit your request */
   padding: 20px;
   background: #fff;
   border: 3px solid #000;
@@ -49,21 +71,21 @@ button:hover {
   background-color: #f9a825;
 }
 
-/* Ensure all prize images have the same size */
-#resultText img {
-  width: 300px; /* Set a fixed width for the prize images */
-  height: 300px; /* Set a fixed height for the prize images */
-  object-fit: contain; /* Ensure images are not stretched and maintain aspect ratio */
-  margin: 20px; /* Optional: Add some space around the images */
-}
-
-/* Center the result container on the screen */
 #resultText {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100vh; /* Full height of the viewport */
-  flex-direction: column; /* Stack the text and image */
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-  padding:
+  height: 100vh;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+#resultText img {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  margin: 20px;
+}
