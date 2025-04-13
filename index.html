@@ -3,43 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lucky Spin</title>
+  <title>RuneSlots</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.cdnfonts.com/css/runescape-uf" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
-    <div id="titleContainer">
-      <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/RUNESLOTS.png?v=1744540077258"
-           alt="RuneSlots Title" id="titleImage">
-    </div>
+    <!-- Enlarged Header Image -->
+    <img 
+      src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/RUNESLOTS.png?v=1744540077258" 
+      alt="Runeslots" 
+      class="header-image"
+    />
 
+    <!-- Slot machine reels -->
     <div class="slot-machine">
       <div class="reel" id="reel1">
-        <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Air_rune_detail.webp?v=1744539387027" alt="Rune 1">
+        <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Air_rune_detail.webp?v=1744539387027" alt="Reel 1" />
       </div>
       <div class="reel" id="reel2">
-        <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Air_rune_detail.webp?v=1744539387027" alt="Rune 2">
+        <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Air_rune_detail.webp?v=1744539387027" alt="Reel 2" />
       </div>
       <div class="reel" id="reel3">
-        <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Air_rune_detail.webp?v=1744539387027" alt="Rune 3">
+        <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Air_rune_detail.webp?v=1744539387027" alt="Reel 3" />
       </div>
     </div>
 
+    <!-- Spin button -->
     <button id="spinBtn">Spin</button>
 
-    <div id="triesLeftText" style="display: none; margin-top: 20px; font-size: 1.2rem;"></div>
+    <!-- Tries Left -->
+    <div id="triesLeftText" style="display:none; margin-top: 20px;"></div>
 
+    <!-- Result box -->
     <div id="resultText" style="display: none;">
       <div id="youWonText">You won!</div>
       <div id="prizeImageContainer"></div>
-      <div id="adminText">Please show this screen to claim your reward.</div>
+      <div id="adminText">Show this screen to an admin to claim your prize.</div>
     </div>
+
+    <!-- Audio for spinning -->
+    <audio id="spinSound" preload="auto">
+      <source src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/spin-sound.mp3?v=1744520197713" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
   </div>
 
-  <!-- Sound -->
-  <audio id="spinSound" src="https://cdn.glitch.global/5e10e73a-3e6f-4db4-9244-7558c4e70e2f/spin-sound.mp3?v=1744477467022" preload="auto"></audio>
-
+  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>

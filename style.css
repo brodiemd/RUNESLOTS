@@ -20,8 +20,9 @@ body {
   box-shadow: 0 0 20px #000;
 }
 
+/* Replaces the <h1> styling with image */
 .container img.header-image {
-  height: 60px;
+  height: 120px; /* 100% bigger than 60px */
   width: auto;
   margin-bottom: 30px;
   display: block;
@@ -113,4 +114,46 @@ button:hover {
   font-size: 2rem;
   margin-bottom: 20px;
   text-shadow: 2px 2px 5px black;
+}
+
+#prizeImageContainer {
+  margin-bottom: 20px;
+}
+
+#adminText {
+  font-family: 'Arial', sans-serif;
+  color: white;
+  font-size: 1.2rem;
+}
+
+#prizeImageContainer img {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  margin: 10px auto;
+  border: 2px solid #ffcc00;
+  border-radius: 10px;
+  background-color: #2a2a2a;
+  padding: 5px;
+}
+
+.slot-machine::before,
+.slot-machine::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #caa93f;
+  border: 2px solid #6e4b1f;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slot-machine::before {
+  left: -40px;
+}
+
+.slot-machine::after {
+  right: -40px;
 }
