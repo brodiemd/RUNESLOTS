@@ -67,7 +67,7 @@ header img.header-image {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  margin-left: 60px; /* Adjust this value to move it to the right */
+  margin-left: 70px; /* Adjust this value to move it to the right */
   position: relative;
   z-index: 1;
 }
