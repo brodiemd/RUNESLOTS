@@ -230,8 +230,11 @@ header img.header-image {
   }
 
   header img.header-image {
-    height: 150px;
-  }
+  height: 150px; /* Resize if needed */
+  margin-top: -10px; /* Move up (positive value moves it down) */
+  margin-left: -15px; /* Move left (positive value moves it right) */
+}
+
 
  .reels-container {
   width: 100%;
