@@ -384,31 +384,35 @@ header img.header-image {
   }
 
   .reels-container {
+    position: relative;
     left: 0;
     margin: 0 auto;
-    justify-content: center;
-    flex-direction: row;
-    width: 100%;
     padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Reset weird transforms */
+  .reel,
+  .reel-left,
+  .reel-middle,
+  .reel-right {
+    transform: none !important;
   }
 
   .reel {
     width: 60px;
     height: 60px;
-    margin: 0 5px;
+    margin: 0 6px;
     padding: 5px;
-    transform: none !important;
   }
 
   .reel img {
     width: 50px;
     height: 50px;
-  }
-
-  .reel-left,
-  .reel-middle,
-  .reel-right {
-    transform: none !important;
   }
 
   /* Adjust spin button positioning */
