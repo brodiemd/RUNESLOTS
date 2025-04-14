@@ -67,12 +67,9 @@ header img.header-image {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  position: relative; /* Position relative to the normal flow */
-  left: 70px; /* Move it to the right */
+  position: relative;
   z-index: 1;
 }
-
-
 
 /* Individual Reels */
 .reel {
@@ -240,6 +237,15 @@ header img.header-image {
 
 /* 🖥 DESKTOP ONLY (≥481px) */
 @media screen and (min-width: 481px) {
+  .slot-machine {
+    justify-content: flex-start;
+    padding-left: 80px;
+  }
+
+  .reels-container {
+    margin-left: auto;
+  }
+
   #spinButton {
     margin-left: auto;
     margin-right: auto;
