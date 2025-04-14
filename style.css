@@ -67,10 +67,11 @@ header img.header-image {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  margin-left: 70px; /* Adjust this value to move it to the right */
-  position: absolute;
+  position: relative; /* Position relative to the normal flow */
+  left: 70px; /* Move it to the right */
   z-index: 1;
 }
+
 
 
 /* Individual Reels */
