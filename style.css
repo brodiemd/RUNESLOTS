@@ -235,70 +235,15 @@ header img.header-image {
   margin-top: 95px;
 }
 
-/* 📱 MOBILE (≤480px) */
-@media screen and (max-width: 480px) {
-  body {
-    padding: 1rem;
-  }
-
-  header img.header-image {
-    height: 150px;
-    margin-top: 10px;
-    margin-left: 35px;
-    transform: translateX(10px);
-  }
-
-  .slot-machine {
-    width: 100%;
-    max-width: 100%;
-    justify-content: flex-start;
-    margin-top: 5%;
-    padding: 0 10px;
-  }
-
-  .slot-machine .slot-background {
-    transform: translate(-56%, -50%) scale(1.2);
-  }
-
-  .reels-container {
-    width: 100%;
-    padding: 5px;
-    margin-left: -20px;
-    transform: scale(0.75);
-    transform-origin: top left;
-  }
-
-  button {
-    font-size: 4vw;
-  }
-
-  #spinButton {
-    padding: 10px 25px;
-    margin-top: 20px !important;
-  }
-
-  .spin-button-wrapper {
-    justify-content: center;
-    padding-right: 0;
-    margin-top: 50px;
-  }
-
-  #resultText {
-    width: 90%;
-    font-size: 1rem;
-  }
-
-  #prizeImageContainer img {
-    width: 180px;
-    height: 180px;
-  }
-}
-
 /* 🖥 DESKTOP ONLY (≥481px) */
 @media screen and (min-width: 481px) {
   #spinButton {
-    margin-left: -10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #triesLeftText {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
-
-
