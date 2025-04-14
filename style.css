@@ -394,8 +394,8 @@ header img.header-image {
 
   .slot-machine .slot-background {
     transform: translate(-50%, -50%) scale(1.4);
-    top: 80%; /* moved background lower */
-    left: 70%;
+    top: 100%; /* moved background lower */
+    left: 60%;
     position: absolute;
     z-index: 0;
   }
