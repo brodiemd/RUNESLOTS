@@ -417,9 +417,14 @@ header img.header-image {
 
   .spin-button-wrapper {
     position: absolute;
-    bottom: 100px;
+    bottom: 40px; /* move it back up */
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
   }
+
+  .prize-showcase-wrapper {
+    bottom: 0; /* Ensure the showcase reel sits at the bottom of the screen */
+  }
 }
+
