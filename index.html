@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RuneSlots</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Link to the RuneScape Font -->
+  <link rel="stylesheet" href="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/RuneScape.woff?v=1744634853788" type="font/woff2">
 </head>
 <body>
   <!-- RuneSlots Logo -->
@@ -35,10 +37,13 @@
       </div>
     </div>
 
-    <!-- Spin Button -->
+    <!-- Spin Button (Text-based) -->
     <div class="spin-button-wrapper">
-      <button id="spinButton">SPIN</button>
-    </div>
+  <button id="spinButton">
+    <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/dialogue.png?v=1744636774486" alt="Spin Button">
+  </button>
+</div>
+
 
     <!-- Tries Left -->
     <div id="triesLeftText" style="display:none; margin-top: 20px;"></div>
@@ -54,7 +59,7 @@
     <audio id="spinSound" preload="auto">
       <source src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/spin-sound.mp3?v=1744520197713" type="audio/mpeg">
     </audio>
-  </div>
+  </div> <!-- closes .container -->
 
   <!-- Background Music -->
   <audio id="backgroundMusic" autoplay loop>
@@ -62,12 +67,9 @@
   </audio>
 
   <!-- Prize Showcase -->
-  <div class="drop-table-title">Drop table</div>
-
-  <!-- Prize Showcase -->
   <div class="prize-showcase-wrapper">
     <div class="prize-showcase">
-      <div class="prize-track" id="prizeTrack">
+      <div class="prize-track" id="prizeTrack"></div>
         <img src="prize1.png" alt="Prize 1">
         <img src="prize2.png" alt="Prize 2">
         <img src="prize3.png" alt="Prize 3">
@@ -79,7 +81,6 @@
     </div>
   </div>
 
-  <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
