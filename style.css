@@ -201,7 +201,7 @@ header img.header-image {
   }
 
   .slot-machine .slot-background {
-    transform: translate(-100%, -50%) scale(2);
+    transform: translate(-80%, -50%) scale(1.7);
   }
 
   .reels-container {
