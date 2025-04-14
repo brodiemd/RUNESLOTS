@@ -226,14 +226,17 @@ header img.header-image {
   }
 
   .slot-machine .slot-background {
-    transform: translate(-60%, -50%) scale(1.2);
+    transform: translate(-56%, -50%) scale(1.2);
   }
 
   header img.header-image {
-  height: 150px; /* Resize if needed */
-  margin-top: -10px; /* Move up (positive value moves it down) */
-  margin-left: -5px; /* Move left (positive value moves it right) */
+    height: 150px; /* Resize */
+    margin-top: 10px; /* Move up/down */
+    margin-left: 20px; /* Move right */
+    transform: translateX(10px); /* Fine-tune horizontal position */
+  }
 }
+
 
 
  .reels-container {
