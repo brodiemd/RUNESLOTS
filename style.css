@@ -219,7 +219,7 @@ header img.header-image {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-right: 0px;
+  padding-right: 5px;
   margin-top: 95px;
 }
 
