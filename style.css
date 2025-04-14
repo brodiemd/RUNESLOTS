@@ -198,6 +198,7 @@ header img.header-image {
   .slot-machine {
     width: 100%;
     max-width: 100%;
+    justify-content: flex-start; /* Moves the entire slot machine to the left */
   }
 
   .slot-machine .slot-background {
@@ -206,6 +207,7 @@ header img.header-image {
 
   .reels-container {
     padding: 5px;
+    margin-left: -30px; /* Moves the reels left on mobile */
   }
 
   button {
@@ -234,6 +236,7 @@ header img.header-image {
   .reels-container {
     width: 100%;
     padding: 5px;
+    margin-left: -20px; /* Adjust further for smaller screens if needed */
   }
 
   button {
@@ -244,6 +247,7 @@ header img.header-image {
     padding: 10px 25px;
   }
 }
+
 
 /* Spin Button Styling */
 #spinButton {
