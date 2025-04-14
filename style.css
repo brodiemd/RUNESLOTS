@@ -441,6 +441,8 @@ header img.header-image {
   #spinButton {
     width: 380px;
     height: auto;
+    position: relative;
+    top: 50px
   }
 
   #resultText {
