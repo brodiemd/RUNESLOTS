@@ -293,3 +293,11 @@ header img.header-image {
     height: 180px;
   }
 }
+
+/* 🖥 DESKTOP ONLY (≥481px) */
+@media screen and (min-width: 481px) {
+  #spinButton,
+  #triesLeftText {
+    transform: translateX(-5px);
+  }
+}
