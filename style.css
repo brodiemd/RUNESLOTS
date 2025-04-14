@@ -402,6 +402,7 @@ header img.header-image {
 
   .reels-container {
     position: relative;
+    top: 20px;
     z-index: 2; /* Ensure above background */
     margin: 0 auto;
     padding: 10px;
