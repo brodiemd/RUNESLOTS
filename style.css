@@ -370,7 +370,9 @@ header img.header-image {
   }
 
   .slot-machine {
-    flex-direction: column;
+    flex-direction: row; /* changed from column */
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     top: -30px;
     margin-top: 0;
@@ -389,7 +391,7 @@ header img.header-image {
     margin: 0 auto;
     padding: 10px;
     display: flex;
-    flex-direction: row; /* KEEP THIS ONLY */
+    flex-direction: row; /* good */
     justify-content: center;
     align-items: center;
     width: 100%;
