@@ -232,7 +232,7 @@ header img.header-image {
   header img.header-image {
     height: 150px; /* Resize */
     margin-top: 10px; /* Move up/down */
-    margin-left: 20px; /* Move right */
+    margin-left: 30px; /* Move right */
     transform: translateX(10px); /* Fine-tune horizontal position */
   }
 }
@@ -260,7 +260,7 @@ header img.header-image {
 
 /* Spin Button Styling */
 #spinButton {
-  margin-top: 115px;
+  margin-top: 150px;
   padding: 15px 40px;
   font-family: 'Runescape UF', sans-serif;
   font-size: 1.5rem;
