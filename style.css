@@ -96,7 +96,7 @@ header img.header-image {
   margin: 0 auto;
 }
 
-/* Shake animation */
+/* Animations */
 @keyframes shake {
   0% { transform: translateX(0); }
   25% { transform: translateX(-10px); }
@@ -105,25 +105,27 @@ header img.header-image {
   100% { transform: translateX(0); }
 }
 
-/* Green glow on win */
 @keyframes glowGreen {
   0% { box-shadow: 0 0 10px green, 0 0 20px green, 0 0 30px green; }
   100% { box-shadow: 0 0 20px lightgreen, 0 0 30px lightgreen, 0 0 50px green; }
 }
 
-/* Red glow on loss */
 @keyframes glowRed {
   0% { box-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red; }
   100% { box-shadow: 0 0 20px lightcoral, 0 0 30px lightcoral, 0 0 50px red; }
 }
 
-/* Glow effects */
+/* Effects */
 .glow-win {
   animation: glowGreen 1s ease-in-out forwards;
 }
 
 .glow-lose {
   animation: glowRed 1s ease-in-out forwards;
+}
+
+.shake {
+  animation: shake 0.5s;
 }
 
 /* Prize Interface */
@@ -267,5 +269,15 @@ header img.header-image {
     justify-content: center;
     padding-right: 0;
     margin-top: 50px;
+  }
+
+  #resultText {
+    width: 90%;
+    font-size: 1rem;
+  }
+
+  #prizeImageContainer img {
+    width: 180px;
+    height: 180px;
   }
 }
