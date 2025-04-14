@@ -20,17 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let tries = 3;
   let isWinner = false;
-  let guaranteedWinIndex = Math.floor(Math.random() * tries); // Force a win within 3 tries
+  let guaranteedWinIndex = Math.floor(Math.random() * tries);
 
-  // Updated event listener for the spin button
   document.getElementById("spinButton").addEventListener("click", function () {
     if (isWinner) return alert("You've already won!");
     if (tries <= 0) return alert("No tries left!");
 
-    // Play spin sound
     const spinSound = document.getElementById("spinSound");
     if (spinSound) {
-      spinSound.currentTime = 0; // Reset the sound to the beginning
+      spinSound.currentTime = 0;
       spinSound.play().catch((e) => console.warn("Sound blocked:", e));
     }
 
@@ -47,8 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     triesLeftText.style.display = "none";
 
     reels.forEach((reel) => {
-      reel.classList.remove("glow-win", "glow-lose");
-      reel.classList.remove("shake");
+      reel.classList.remove("glow-win", "glow-lose", "shake");
     });
 
     const spinDuration = 3000;
@@ -65,16 +62,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setTimeout(() => {
         clearInterval(interval);
-
-        let finalImage = forceWin ? reelImages[0] : reelImages[Math.floor(Math.random() * reelImages.length)];
-
+        let finalImage = forceWin
+          ? reelImages[0]
+          : reelImages[Math.floor(Math.random() * reelImages.length)];
         reel.src = finalImage;
         finalImages[i] = finalImage;
       }, spinDuration + i * 200);
     });
 
     setTimeout(() => {
-      const allMatch = finalImages[0] === finalImages[1] && finalImages[1] === finalImages[2];
+      const allMatch =
+        finalImages[0] === finalImages[1] && finalImages[1] === finalImages[2];
 
       if (allMatch) {
         isWinner = true;
@@ -99,15 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 window.addEventListener("DOMContentLoaded", function () {
   const bgMusic = document.getElementById("backgroundMusic");
-
   const playMusicOnce = () => {
     if (bgMusic.paused) {
       bgMusic.play();
     }
-    // Remove this listener so it doesn't keep trying to play
     document.removeEventListener("click", playMusicOnce);
   };
-
-  // Wait for the first click to play music (if autoplay is blocked)
   document.addEventListener("click", playMusicOnce);
 });
