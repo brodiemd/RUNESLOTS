@@ -365,38 +365,44 @@ header img.header-image {
     align-items: center;
   }
 
+  header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   header img.header-image {
     height: 120px;
-    margin-top: 40px; /* Brought the logo down */
+    margin-top: 40px;
     margin-bottom: 10px;
     position: relative;
     display: block;
   }
 
-.slot-machine {
-  display: flex;
-  flex-direction: row; /* Keep reels horizontal */
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-top: 80px; /* 👈 Increased spacing */
-  width: 100%;
-  position: relative;
-  z-index: 1; /* make sure it's above any BG if needed */
-}
+  .slot-machine {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
 
-/* Optional: Adjust the slot background so it doesn't float too high */
-.slot-machine .slot-background {
-  transform: translate(-50%, -50%) scale(1.4);
-  top: 25%; /* 👈 Lowered the background position */
-  left: 50%;
-  position: absolute;
-  z-index: 0;
-}
-
+  .slot-machine .slot-background {
+    transform: translate(-50%, -50%) scale(1.4);
+    top: 25%;
+    left: 50%;
+    position: absolute;
+    z-index: 0;
+  }
 
   .reels-container {
     position: relative;
+    z-index: 2; /* <-- Ensure reels are above background */
     margin: 0 auto;
     padding: 10px;
     display: flex;
