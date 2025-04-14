@@ -68,7 +68,7 @@ header img.header-image {
   align-items: center;
   margin-top: 20px;
   margin-left: 70px; /* Adjust this value to move it to the right */
-  position: relative;
+  position: absolute;
   z-index: 1;
 }
 
