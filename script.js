@@ -93,8 +93,30 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }, spinDuration + 1000);
   });
+
+  // Populate and duplicate prizes 5x for seamless scroll
+  function populatePrizeShowcase() {
+    const track = document.querySelector(".prize-track");
+    if (!track) return;
+
+    // Clear the track
+    track.innerHTML = "";
+
+    // Add all prizes 5 times for longer loop
+    for (let i = 0; i < 5; i++) {
+      prizes.forEach(prize => {
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("prize-image");
+        wrapper.innerHTML = prize;
+        track.appendChild(wrapper);
+      });
+    }
+  }
+
+  populatePrizeShowcase();
 });
 
+// Music play trigger
 window.addEventListener("DOMContentLoaded", function () {
   const bgMusic = document.getElementById("backgroundMusic");
   const playMusicOnce = () => {
