@@ -214,14 +214,15 @@ header img.header-image {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
-/* 🔄 DESKTOP DEFAULT */
 .spin-button-wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-right: 5px;
+  padding-right: 0;
   margin-top: 95px;
+  margin-left: -30px; /* adjust value as needed */
 }
+
 
 /* 📱 MOBILE (≤480px) */
 @media screen and (max-width: 480px) {
