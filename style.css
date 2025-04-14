@@ -393,9 +393,10 @@ header img.header-image {
     justify-content: center;
     align-items: center;
     width: 100%;
+    max-width: 350px;
   }
 
-  /* Reset weird transforms */
+  /* Reset transforms on mobile */
   .reel,
   .reel-left,
   .reel-middle,
@@ -404,26 +405,24 @@ header img.header-image {
   }
 
   .reel {
-    width: 60px;
-    height: 60px;
-    margin: 0 6px;
+    width: 70px;
+    height: 70px;
+    margin: 0 5px;
     padding: 5px;
   }
 
   .reel img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
   }
 
-  /* Adjust spin button positioning */
   .spin-button-wrapper {
-    bottom: 200px; /* move it up if needed */
+    bottom: 180px;
   }
 
   #spinButton {
-    width: 300px; /* smaller button */
+    width: 300px;
   }
-}
 
   #resultText {
     width: 90%;
@@ -460,5 +459,6 @@ header img.header-image {
     height: 60px;
   }
 }
+
 
 
