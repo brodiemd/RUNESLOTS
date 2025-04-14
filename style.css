@@ -218,9 +218,9 @@ header img.header-image {
 .spin-button-wrapper {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
-  padding-right: 100px;
-  margin-top: 80px;
+  justify-content: center;
+  padding-right: 0px;
+  margin-top: 95px;
 }
 
 /* 📱 MOBILE (≤480px) */
