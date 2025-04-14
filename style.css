@@ -185,9 +185,89 @@ header img.header-image {
   transform: translateX(-12px);
 }
 
+/* Responsive Design Adjustments */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  header img.header-image {
+    height: 200px;
+  }
+
+  .slot-machine {
+    width: 100%;
+    max-width: 100%;
+    justify-content: flex-start;
+  }
+
+  .slot-machine .slot-background {
+    transform: translate(-20%, -50%) scale(1.5);
+  }
+
+  .reels-container {
+    padding: 5px;
+    margin-left: -30px;
+  }
+
+  button {
+    font-size: 3vw;
+  }
+
+  #spinButton {
+    padding: 12px 30px;
+  }
+
+  .spin-button-wrapper {
+    justify-content: center !important;
+    padding-left: 0 !important;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .slot-machine {
+    margin-top: 5%;
+    padding: 0 10px;
+  }
+
+  .slot-machine .slot-background {
+    transform: translate(-56%, -50%) scale(1.2);
+  }
+
+  header img.header-image {
+    height: 150px;
+    margin-top: 10px;
+    margin-left: 35px;
+    transform: translateX(10px);
+  }
+
+  .reels-container {
+    width: 100%;
+    padding: 5px;
+    margin-left: -20px;
+    transform: scale(0.75);
+    transform-origin: top left;
+  }
+
+  button {
+    font-size: 4vw;
+  }
+
+  #spinButton {
+    padding: 10px 25px;
+    margin-top: 20px !important;
+  }
+
+  .spin-button-wrapper {
+    justify-content: center !important;
+    padding-left: 0 !important;
+    margin-top: 20px;
+  }
+}
+
 /* Spin Button Styling */
 #spinButton {
-  margin-top: 80px;
   padding: 15px 40px;
   font-family: 'Runescape UF', sans-serif;
   font-size: 1.5rem;
@@ -213,12 +293,11 @@ header img.header-image {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
+/* 🔽 Updated this wrapper */
 .spin-button-wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
   padding-left: 0;
+  margin-top: 50px; /* 🔥 Increased from 20px to 50px */
 }
-
-/* Responsive Design Adjustments */
-@media screen and (max-width: 768px) {
