@@ -198,7 +198,7 @@ header img.header-image {
   .slot-machine {
     width: 100%;
     max-width: 100%;
-    justify-content: flex-start; /* Moves the entire slot machine to the left */
+    justify-content: flex-start;
   }
 
   .slot-machine .slot-background {
@@ -207,7 +207,7 @@ header img.header-image {
 
   .reels-container {
     padding: 5px;
-    margin-left: -30px; /* Moves the reels left on mobile */
+    margin-left: -30px;
   }
 
   button {
@@ -216,6 +216,12 @@ header img.header-image {
 
   #spinButton {
     padding: 12px 30px;
+  }
+
+  .spin-button-wrapper {
+    justify-content: center !important;
+    padding-left: 0 !important;
+    margin-top: 20px;
   }
 }
 
@@ -230,23 +236,19 @@ header img.header-image {
   }
 
   header img.header-image {
-    height: 150px; /* Resize */
-    margin-top: 10px; /* Move up/down */
-    margin-left: 30px; /* Move right */
-    transform: translateX(10px); /* Fine-tune horizontal position */
+    height: 150px;
+    margin-top: 10px;
+    margin-left: 35px;
+    transform: translateX(10px);
   }
-}
 
-
-
- .reels-container {
-  width: 100%;
-  padding: 5px;
-  margin-left: -20px; /* Keep this */
-  transform: scale(0.75); /* Shrinks the container and contents */
-  transform-origin: top left; /* Keeps it anchored in place */
-}
-
+  .reels-container {
+    width: 100%;
+    padding: 5px;
+    margin-left: -20px;
+    transform: scale(0.75);
+    transform-origin: top left;
+  }
 
   button {
     font-size: 4vw;
@@ -254,9 +256,15 @@ header img.header-image {
 
   #spinButton {
     padding: 10px 25px;
+    margin-top: 20px !important;
+  }
+
+  .spin-button-wrapper {
+    justify-content: center !important;
+    padding-left: 0 !important;
+    margin-top: 20px;
   }
 }
-
 
 /* Spin Button Styling */
 #spinButton {
@@ -289,6 +297,6 @@ header img.header-image {
 .spin-button-wrapper {
   width: 100%;
   display: flex;
-  justify-content: flex-start;
-  padding-left: 85px;
+  justify-content: center;
+  padding-left: 0;
 }
