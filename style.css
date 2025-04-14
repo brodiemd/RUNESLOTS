@@ -233,11 +233,14 @@ header img.header-image {
     height: 150px;
   }
 
-  .reels-container {
-    width: 100%;
-    padding: 5px;
-    margin-left: -20px; /* Adjust further for smaller screens if needed */
-  }
+ .reels-container {
+  width: 100%;
+  padding: 5px;
+  margin-left: -20px; /* Keep this */
+  transform: scale(0.75); /* Shrinks the container and contents */
+  transform-origin: top left; /* Keeps it anchored in place */
+}
+
 
   button {
     font-size: 4vw;
