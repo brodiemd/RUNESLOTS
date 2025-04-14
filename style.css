@@ -389,11 +389,10 @@ header img.header-image {
     margin: 0 auto;
     padding: 10px;
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* KEEP THIS ONLY */
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 350px;
   }
 
   /* Reset transforms on mobile */
