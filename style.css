@@ -373,21 +373,27 @@ header img.header-image {
     display: block;
   }
 
-  .slot-machine {
-    display: flex;
-    flex-direction: row; /* Keep reels horizontal */
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    width: 100%;
-  }
+.slot-machine {
+  display: flex;
+  flex-direction: row; /* Keep reels horizontal */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px; /* 👈 Increased spacing */
+  width: 100%;
+  position: relative;
+  z-index: 1; /* make sure it's above any BG if needed */
+}
 
-  .slot-machine .slot-background {
-    transform: translate(-50%, -50%) scale(1.4);
-    top: 10%;
-    left: 50%;
-  }
+/* Optional: Adjust the slot background so it doesn't float too high */
+.slot-machine .slot-background {
+  transform: translate(-50%, -50%) scale(1.4);
+  top: 25%; /* 👈 Lowered the background position */
+  left: 50%;
+  position: absolute;
+  z-index: 0;
+}
+
 
   .reels-container {
     position: relative;
