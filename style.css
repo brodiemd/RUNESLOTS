@@ -226,13 +226,13 @@ header img.header-image {
   }
 
   .slot-machine .slot-background {
-    transform: translate(-52%, -50%) scale(1.2);
+    transform: translate(-60%, -50%) scale(1.2);
   }
 
   header img.header-image {
   height: 150px; /* Resize if needed */
   margin-top: -10px; /* Move up (positive value moves it down) */
-  margin-left: -15px; /* Move left (positive value moves it right) */
+  margin-left: -5px; /* Move left (positive value moves it right) */
 }
 
 
