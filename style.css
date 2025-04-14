@@ -359,28 +359,27 @@ header img.header-image {
 @media screen and (max-width: 480px) {
   body {
     padding: 1rem;
-    height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center vertically */
-    align-items: center;     /* Center horizontally */
+    align-items: center;
   }
 
   header img.header-image {
     height: 120px;
-    top: 0px; /* Moved down from -80px */
-    margin: 20px auto 10px auto; /* Adds space above and below */
+    margin-top: 40px; /* Brought the logo down */
+    margin-bottom: 10px;
     position: relative;
     display: block;
   }
 
   .slot-machine {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row; /* Keep reels horizontal */
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    position: relative;
-    top: 0; /* Remove negative offset */
-    margin-top: 20px; /* Slight spacing below logo */
+    margin-top: 20px;
     width: 100%;
   }
 
@@ -392,7 +391,6 @@ header img.header-image {
 
   .reels-container {
     position: relative;
-    left: 0;
     margin: 0 auto;
     padding: 10px;
     display: flex;
@@ -464,7 +462,3 @@ header img.header-image {
     height: 60px;
   }
 }
-
-
-
-
