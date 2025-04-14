@@ -383,7 +383,7 @@ header img.header-image {
 
   .slot-machine {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
