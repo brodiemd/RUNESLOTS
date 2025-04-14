@@ -434,12 +434,12 @@ header img.header-image {
   }
 
   .spin-button-wrapper {
-    margin-top: 60px;
+    margin-top: 80px;
     z-index: 3;
   }
 
   #spinButton {
-    width: 400px;
+    width: 380px;
     height: auto;
   }
 
