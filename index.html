@@ -5,11 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RuneSlots</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Link to the RuneScape Font -->
+  <!-- RuneScape Font -->
   <link rel="stylesheet" href="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/RuneScape.woff?v=1744634853788" type="font/woff2">
+  <!-- Confetti Script -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+  <style>
+    /* Confetti container to ensure it overlays everything */
+    #confetti-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body>
-  <!-- RuneSlots Logo -->
+  <!-- Header -->
   <header>
     <img 
       src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/RUNESLOTS.png?v=1744540077258" 
@@ -37,39 +51,48 @@
       </div>
     </div>
 
-    <!-- Spin Button (Text-based) -->
+    <!-- Spin Button -->
     <div class="spin-button-wrapper">
-  <button id="spinButton">
-    <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/dialogue.png?v=1744636774486" alt="Spin Button">
-  </button>
-</div>
-
+      <button id="spinButton">
+        <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/NEWBUTTON.png?v=1744698622450" alt="Spin Button">
+      </button>
+    </div>
 
     <!-- Tries Left -->
     <div id="triesLeftText" style="display:none; margin-top: 20px;"></div>
 
-    <!-- Result Box -->
+    <!-- Result Text -->
     <div id="resultText">
       <div id="youWonText">You won!</div>
       <div id="prizeImageContainer"></div>
       <div id="adminText">Send a screen shot of this to the admin.</div>
     </div>
 
-    <!-- Audio -->
+    <!-- Audio Elements -->
     <audio id="spinSound" preload="auto">
       <source src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/spin-sound.mp3?v=1744520197713" type="audio/mpeg">
     </audio>
-  </div> <!-- closes .container -->
 
-  <!-- Background Music -->
-  <audio id="backgroundMusic" autoplay loop>
-    <source src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/autumn%20voyage.mp3?v=1744555285351" type="audio/mpeg">
-  </audio>
+    <audio id="deathSound">
+      <source src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/runescape-death-sound-101soundboards.mp3?v=1744701336104" type="audio/mpeg">
+    </audio>
+
+    <audio id="backgroundMusic" autoplay loop>
+      <source src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/autumn%20voyage.mp3?v=1744555285351" type="audio/mpeg">
+    </audio>
+
+    <audio id="fireworksSound">
+      <source src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/11L-fireworks_screamers-90862230.mp3?v=1744710343373" type="audio/mp3" />
+    </audio>
+
+    <audio id="levelUpSound" src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/Hitpoints_level_up_(levels_2-49).ogg?v=1744710883915" preload="auto"></audio>
+  </div>
 
   <!-- Prize Showcase -->
+  <div id="dropTableText">Drop table</div>
   <div class="prize-showcase-wrapper">
     <div class="prize-showcase">
-      <div class="prize-track" id="prizeTrack"></div>
+      <div class="prize-track" id="prizeTrack">
         <img src="prize1.png" alt="Prize 1">
         <img src="prize2.png" alt="Prize 2">
         <img src="prize3.png" alt="Prize 3">
@@ -77,10 +100,29 @@
         <img src="prize5.png" alt="Prize 5">
         <img src="prize6.png" alt="Prize 6">
         <img src="prize7.png" alt="Prize 7">
+        <img src="prize8.png" alt="Prize 8">
+        <img src="prize9.png" alt="Prize 9">
+        <img src="prize10.png" alt="Prize 10">
       </div>
     </div>
   </div>
 
+  <!-- Confetti Container -->
+  <div id="confetti-container"></div>
+
+  <!-- Main Script -->
   <script src="script.js"></script>
+
+  <!-- Prize Duplicator for Infinite Scroll -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const track = document.querySelector('.prize-track');
+      const prizes = Array.from(track.children);
+      prizes.forEach(prize => {
+        const clone = prize.cloneNode(true);
+        track.appendChild(clone);
+      });
+    });
+  </script>
 </body>
 </html>
