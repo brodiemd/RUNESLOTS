@@ -460,7 +460,7 @@ header img.header-image {
 .prize-showcase-wrapper {
   position: fixed;
   bottom: 80px;
-  left: -10px;
+  left: -20px;
   width: 100%;
   padding: 10px 0;
   z-index: 10;
