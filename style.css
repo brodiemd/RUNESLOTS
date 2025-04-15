@@ -436,8 +436,8 @@ header img.header-image {
 
   .spin-button-wrapper {
     position: fixed;
-    left: 0px;
-    top: 30px;
+    left: 100px;
+    top: 10px;
     bottom: 180px;
     width: 100%;
   }
