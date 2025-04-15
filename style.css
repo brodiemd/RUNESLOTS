@@ -436,8 +436,8 @@ header img.header-image {
 
   .spin-button-wrapper {
     position: absolute;
-    left: 245px;
-    bottom: 250px;
+    left: 235px;
+    bottom: 220px;
     width: 100%;
   }
 
@@ -467,8 +467,8 @@ header img.header-image {
     width: 90%;
     max-width: 360px;
     position: fixed;
-    bottom: 40px;
-    left: 10px;
+    bottom: 60px;
+    left: 5px;
   }
 
   .prize-track img {
