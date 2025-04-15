@@ -476,7 +476,8 @@ header img.header-image {
 
   #resultText {
     width: 70%;
-    top: 60%;
+    top: 45%;
+    left: 10%
     padding: 20px;
   }
 
