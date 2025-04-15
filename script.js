@@ -4,7 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
     '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/1200px-Abyssal_bludgeon_detail.webp?v=1744503476834" alt="Prize 2" />',
     '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/1200px-Abyssal_whip_detail.webp?v=1744503478978" alt="Prize 3" />',
     '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/1200px-Old_school_bond_detail.webp?v=1744503471902" alt="Prize 4" />',
-    '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/1200px-Serpentine_helm_detail.webp?v=1744503484644" alt="Prize 5" />'
+    '<img src="https://cdn.glitch.global/7c73a667-d47a-4dc0-955c-b462c1d66c84/1200px-Serpentine_helm_detail.webp?v=1744503484644" alt="Prize 5" />',
+    '<img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/640px-Bandos_tassets_detail.webp?v=1744699647769" alt="Prize 6" />',
+    '<img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/640px-Gilded_platebody_detail.webp?v=1744699648001" alt="Prize 7" />',
+    '<img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Chugging_barrel_(disassembled)_detail.webp?v=1744699662148" alt="Prize 8" />',
+    '<img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Armadyl_helmet_detail.webp?v=1744699654007" alt="Prize 9" />',
+    '<img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Toxic_blowpipe_(empty)_detail.webp?v=1744699667478" alt="Prize 10" />'
   ];
 
   const reelImages = [
@@ -21,6 +26,36 @@ document.addEventListener("DOMContentLoaded", () => {
   let tries = 3;
   let isWinner = false;
   let guaranteedWinIndex = Math.floor(Math.random() * tries);
+
+  const backgroundMusic = document.getElementById("backgroundMusic");
+  const deathSound = document.getElementById("deathSound");
+
+  const seaShanty = new Audio("https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/09%20Sea%20Shanty%202.mp3?v=1744534868168");
+  seaShanty.loop = true;
+
+  const levelUpSound = new Audio("https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/Hitpoints_level_up_(levels_2-49).ogg?v=1744710883915");
+
+  const confettiCanvas = document.createElement("canvas");
+  confettiCanvas.id = "confetti-canvas";
+  confettiCanvas.style.position = "fixed";
+  confettiCanvas.style.top = 0;
+  confettiCanvas.style.left = 0;
+  confettiCanvas.style.width = "100%";
+  confettiCanvas.style.height = "100%";
+  confettiCanvas.style.pointerEvents = "none";
+  confettiCanvas.style.zIndex = "9999";
+  document.body.appendChild(confettiCanvas);
+  const myConfetti = confetti.create(confettiCanvas, { resize: true, useWorker: true });
+
+  function triggerConfetti() {
+    myConfetti({
+      particleCount: 200,
+      spread: 120,
+      scalar: 2.2,
+      origin: { y: 0.4 },
+      colors: ['#FFD700', '#ADFF2F', '#00BFFF']
+    });
+  }
 
   document.getElementById("spinButton").addEventListener("click", function () {
     if (isWinner) return alert("You've already won!");
@@ -44,15 +79,13 @@ document.addEventListener("DOMContentLoaded", () => {
     resultText.style.display = "none";
     triesLeftText.style.display = "none";
 
-    reels.forEach((reel) => {
-      reel.classList.remove("glow-win", "glow-lose", "shake");
-    });
+    reels.forEach((reel) => reel.classList.remove("glow-win", "glow-lose", "shake"));
 
     const spinDuration = 3000;
     const intervalDuration = 100;
     const finalImages = [];
-
     let forceWin = tries - 1 === guaranteedWinIndex;
+    let reelsStopped = 0;
 
     reels.forEach((reel, i) => {
       let interval = setInterval(() => {
@@ -67,63 +100,91 @@ document.addEventListener("DOMContentLoaded", () => {
           : reelImages[Math.floor(Math.random() * reelImages.length)];
         reel.src = finalImage;
         finalImages[i] = finalImage;
+        reelsStopped++;
+
+        if (reelsStopped === 3) {
+          const allMatch = finalImages[0] === finalImages[1] && finalImages[1] === finalImages[2];
+
+          if (allMatch) {
+            isWinner = true;
+
+            if (backgroundMusic) {
+              backgroundMusic.pause();
+              backgroundMusic.currentTime = 0;
+            }
+
+            levelUpSound.currentTime = 0;
+            levelUpSound.play().catch((e) => console.warn("Level-up sound blocked:", e));
+
+            levelUpSound.onended = () => {
+              seaShanty.currentTime = 0;
+              seaShanty.play().catch((e) => console.warn("Sea Shanty 2 playback failed:", e));
+            };
+
+            const prize = prizes[Math.floor(Math.random() * prizes.length)];
+
+            // Delay the prize display
+            setTimeout(() => {
+              document.getElementById("prizeImageContainer").innerHTML = prize;
+              document.getElementById("youWonText").innerHTML = "You won!";
+              resultText.style.display = "block";
+              reels.forEach((reel) => reel.classList.add("glow-win"));
+              triggerConfetti();
+            }, 1000); // 2 second delay
+
+          } else {
+            tries--;
+            triesLeftText.innerHTML = `Bad luck! You have ${tries} tries left.`;
+            triesLeftText.style.display = "block";
+
+            reels.forEach((reel) => reel.classList.add("glow-lose", "shake"));
+
+            if (backgroundMusic && deathSound) {
+              const resumeTime = backgroundMusic.currentTime;
+              backgroundMusic.pause();
+              deathSound.currentTime = 0;
+
+              deathSound.onended = () => {
+                if (backgroundMusic.paused) {
+                  backgroundMusic.currentTime = resumeTime;
+                  backgroundMusic.play().catch((e) =>
+                    console.warn("Background music resume blocked:", e)
+                  );
+                }
+              };
+
+              deathSound.play().catch((e) => console.warn("Death sound blocked:", e));
+            }
+          }
+        }
       }, spinDuration + i * 200);
     });
-
-    setTimeout(() => {
-      const allMatch =
-        finalImages[0] === finalImages[1] && finalImages[1] === finalImages[2];
-
-      if (allMatch) {
-        isWinner = true;
-        const prize = prizes[Math.floor(Math.random() * prizes.length)];
-        document.getElementById("prizeImageContainer").innerHTML = prize;
-        document.getElementById("youWonText").innerHTML = "You won!";
-        resultText.style.display = "block";
-        reels.forEach((reel) => {
-          reel.classList.add("glow-win");
-        });
-      } else {
-        tries--;
-        triesLeftText.innerHTML = `Bad luck! You have ${tries} tries left.`;
-        triesLeftText.style.display = "block";
-        reels.forEach((reel) => {
-          reel.classList.add("glow-lose", "shake");
-        });
-      }
-    }, spinDuration + 1000);
   });
 
-  // Populate and duplicate prizes 5x for seamless scroll
   function populatePrizeShowcase() {
     const track = document.querySelector(".prize-track");
     if (!track) return;
-
-    // Clear the track
     track.innerHTML = "";
-
-    // Add all prizes 5 times for longer loop
-    for (let i = 0; i < 5; i++) {
-      prizes.forEach(prize => {
-        const wrapper = document.createElement("div");
-        wrapper.classList.add("prize-image");
-        wrapper.innerHTML = prize;
-        track.appendChild(wrapper);
-      });
+    for (let i = 0; i < 100; i++) {
+      const prizeDiv = document.createElement("div");
+      prizeDiv.innerHTML = prizes[i % prizes.length];
+      track.appendChild(prizeDiv);
     }
   }
 
   populatePrizeShowcase();
 });
 
-// Music play trigger
 window.addEventListener("DOMContentLoaded", function () {
   const bgMusic = document.getElementById("backgroundMusic");
+
   const playMusicOnce = () => {
-    if (bgMusic.paused) {
-      bgMusic.play();
-    }
-    document.removeEventListener("click", playMusicOnce);
+    bgMusic.play().catch(() => {});
+    setTimeout(() => {
+      bgMusic.loop = true;
+      bgMusic.play().catch(() => {});
+    }, 300);
   };
-  document.addEventListener("click", playMusicOnce);
+
+  document.body.addEventListener("click", playMusicOnce);
 });
