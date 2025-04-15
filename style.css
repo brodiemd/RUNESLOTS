@@ -367,45 +367,89 @@ header img.header-image {
 /* 📱 MOBILE ONLY (≤480px) */
 @media screen and (max-width: 480px) {
   body {
-    padding: 1rem;
+    padding: 0.5rem;
     height: auto;
+    overflow-x: hidden;
+    justify-content: flex-start;
   }
 
   header img.header-image {
-    height: 120px;
-    top: -80px;
-    margin-right: auto;
-    margin-left: auto;
+    height: 180px;
+    top: -60px;
+    margin: 0 auto 10px auto;
   }
 
   .slot-machine {
     flex-direction: column;
     align-items: center;
-    top: -30px;
+    top: -10px;
     margin-top: 0;
     width: 100%;
   }
 
   .slot-machine .slot-background {
-    transform: translate(-50%, -50%) scale(1.2);
-    top: 5%;
+    transform: translate(-50%, -50%) scale(1.4);
+    top: 0%;
     left: 50%;
   }
 
   .reels-container {
-    margin-top: 20px;
+    flex-direction: row;
+    margin-top: 0;
+    left: 0;
+    transform: scale(0.9);
+  }
+
+  .reel {
+    margin: 0 5px;
+  }
+
+  .reel img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .spin-button-wrapper {
+    bottom: 180px;
+    width: 100%;
+  }
+
+  #spinButton {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  #dropTableText {
+    font-size: 1.8rem;
+    bottom: 110px;
   }
 
   .prize-showcase-wrapper {
-    bottom: 0;
     padding: 10px 0;
   }
 
   .prize-showcase {
-    width: 100%;
+    padding: 8px 0;
   }
 
-  .prize-track {
-    animation: scrollPrize 60s linear infinite;
+  .prize-track img {
+    height: 60px;
+    padding: 4px;
+  }
+
+  #resultText {
+    width: 90%;
+    top: 55%;
+    padding: 20px;
+  }
+
+  #youWonText {
+    font-size: 1.5rem;
+  }
+
+  #prizeImageContainer img {
+    width: 180px;
+    height: 180px;
   }
 }
+
