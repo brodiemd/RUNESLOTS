@@ -463,6 +463,9 @@ header img.header-image {
    .prize-showcase {
     width: 90%;
     max-width: 350px;
+    position: fixed;
+    bottom: 20px;
+    left: -5px;
   }
 
   .prize-track img {
