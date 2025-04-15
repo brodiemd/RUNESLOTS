@@ -70,8 +70,6 @@ header img.header-image {
 
 /* Reels Container */
 .reels-container {
-  background-color: black;
-  border: 5px solid #8B4513;
   padding: 10px;
   border-radius: 10px;
   display: flex;
@@ -79,7 +77,8 @@ header img.header-image {
   align-items: center;
   margin-top: 20px;
   position: relative;
-  left: 70px;
+  left: 0px;
+  top: -25px
   z-index: 1;
 }
 
@@ -196,6 +195,8 @@ header img.header-image {
   text-shadow: 2px 2px 5px black;
   width: 100%;
   text-align: center;
+  position: relative;
+  top: -25px;
 }
 
 /* Reel Positioning */
