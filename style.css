@@ -435,7 +435,7 @@ header img.header-image {
   }
 
   .spin-button-wrapper {
-    position: fixed;
+    position: absolute;
     left: 245px;
     bottom: 250px;
     width: 100%;
@@ -458,7 +458,7 @@ header img.header-image {
   }
 
   .prize-showcase-wrapper {
-    position: fixed;
+    position: asbolute;
     bottom: 0;
     padding: 10px 0;
   }
@@ -479,7 +479,7 @@ header img.header-image {
   #resultText {
     width: 70%;
     top: 45%;
-    left: 50%;
+    left: 45%;
     padding: 20px;
   }
 
