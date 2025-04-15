@@ -465,7 +465,7 @@ header img.header-image {
     width: 90%;
     max-width: 350px;
     position: fixed;
-    bottom: -10px;
+    bottom: 30px;
     left: 10px;
   }
 
