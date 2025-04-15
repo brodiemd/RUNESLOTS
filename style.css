@@ -459,8 +459,8 @@ header img.header-image {
 
 .prize-showcase-wrapper {
   position: fixed;
-  bottom: 50px;
-  left: 30px;
+  bottom: 80px;
+  left: 80px;
   width: 100%;
   padding: 10px 0;
   z-index: 10;
