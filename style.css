@@ -389,7 +389,7 @@ header img.header-image {
 
   .slot-machine .slot-background {
     transform: translate(-50%, -50%) scale(1.4);
-    top: 90%;
+    top: 110%;
     left: 60%;
   }
 
@@ -406,7 +406,7 @@ header img.header-image {
     scale: 0.9 !important;
     padding: 10px !important;
     border-radius: 10px !important;
-    width: 100% !important;
+    width: 120% !important;
     max-width: 320px !important;
     box-sizing: border-box !important;
   }
@@ -466,7 +466,7 @@ header img.header-image {
 
   #resultText {
     width: 90%;
-    top: 55%;
+    top: 70%;
     padding: 20px;
   }
 
