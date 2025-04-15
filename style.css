@@ -389,7 +389,7 @@ header img.header-image {
 
   .slot-machine .slot-background {
     transform: translate(-50%, -50%) scale(1.4);
-    top: 80%;
+    top: 85%;
     left: 60%;
   }
 
@@ -437,8 +437,8 @@ header img.header-image {
   .spin-button-wrapper {
     position: fixed;
     left: 250px;
-    bottom: 270px;
-    width: 100%;
+    bottom: 250px;
+    width: 120%;
   }
 
   #spinButton {
