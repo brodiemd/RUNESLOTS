@@ -441,6 +441,11 @@ header img.header-image {
     width: 100%;
   }
 
+  #triesLeftText {
+  top: 20px; /* or whatever looks good */
+}
+
+
   #spinButton {
     width: 120%;
     max-width: 300px;
