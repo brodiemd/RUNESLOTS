@@ -393,21 +393,36 @@ header img.header-image {
     left: 50%;
   }
 
-  .reels-container {
-    flex-direction: row;
-    margin-top: 0;
-    left: 0;
-    transform: scale(0.9);
-  }
+.reels-container {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+  left: 0;
+  top: 0;
+  transform: none;
+  scale: 0.9;
+  padding: 10px;
+  border: 4px solid #8B4513;
+  border-radius: 10px;
+  background-color: black;
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+}
 
-  .reel {
-    margin: 0 5px;
-  }
+.reel {
+  margin: 0 6px;
+  transform: none !important; /* Override .reel-left / right transforms */
+  padding: 5px;
+}
 
-  .reel img {
-    width: 50px;
-    height: 50px;
-  }
+.reel img {
+  width: 50px;
+  height: 50px;
+}
+
 
   .spin-button-wrapper {
     bottom: 180px;
