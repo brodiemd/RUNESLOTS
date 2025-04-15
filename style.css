@@ -460,8 +460,9 @@ header img.header-image {
     padding: 10px 0;
   }
 
-  .prize-showcase {
-    padding: 8px 0;
+   .prize-showcase {
+    width: 95%;
+    max-width: 320px;
   }
 
   .prize-track img {
