@@ -20,6 +20,15 @@
       z-index: 9999;
       pointer-events: none;
     }
+
+    /* Mute Button */
+    .mute-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      z-index: 10000;
+    }
   </style>
 </head>
 <body>
@@ -114,6 +123,11 @@
   <!-- Confetti Container -->
   <div id="confetti-container"></div>
 
+  <!-- Mute Button -->
+  <div class="mute-button">
+    <img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/sound-icon.png?v=1744705551218" alt="Mute Button" id="muteIcon">
+  </div>
+
   <!-- Main Script -->
   <script src="script.js"></script>
 
@@ -127,6 +141,33 @@
         track.appendChild(clone);
       });
     });
+
+    // Mute button functionality
+    const muteButton = document.querySelector('.mute-button');
+    const muteIcon = document.getElementById('muteIcon');
+    let isMuted = false;
+
+    muteButton.addEventListener('click', () => {
+      isMuted = !isMuted;
+      if (isMuted) {
+        muteIcon.src = 'https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/mute-icon.png?v=1744705551218'; // Mute icon
+        // Mute all sounds
+        document.getElementById('backgroundMusic').muted = true;
+        document.getElementById('spinSound').muted = true;
+        document.getElementById('deathSound').muted = true;
+        document.getElementById('fireworksSound').muted = true;
+        document.getElementById('levelUpSound').muted = true;
+      } else {
+        muteIcon.src = 'https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/sound-icon.png?v=1744705551218'; // Unmute icon
+        // Unmute all sounds
+        document.getElementById('backgroundMusic').muted = false;
+        document.getElementById('spinSound').muted = false;
+        document.getElementById('deathSound').muted = false;
+        document.getElementById('fireworksSound').muted = false;
+        document.getElementById('levelUpSound').muted = false;
+      }
+    });
   </script>
 </body>
 </html>
+
