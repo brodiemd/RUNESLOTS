@@ -414,10 +414,16 @@ header img.header-image {
 }
 
 .reel {
-  margin: 0 6px;
-  transform: none !important; /* Override .reel-left / right transforms */
-  padding: 5px;
+  width: 70px !important;
+  height: 70px !important;
+  margin: 0 5px !important;
+  padding: 5px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  transform: none !important;
 }
+
 
 .reel img {
   width: 50px;
