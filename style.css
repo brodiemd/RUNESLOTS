@@ -454,7 +454,7 @@ header img.header-image {
 
   #dropTableText {
     font-size: 1.8rem;
-    bottom: 120px;
+    bottom: 130px;
   }
 
   .prize-showcase-wrapper {
@@ -465,7 +465,7 @@ header img.header-image {
     width: 90%;
     max-width: 350px;
     position: fixed;
-    bottom: 30px;
+    bottom: 40px;
     left: 10px;
   }
 
