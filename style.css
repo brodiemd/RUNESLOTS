@@ -26,7 +26,7 @@ body {
 
 /* RuneSlots Logo */
 header img.header-image {
-  height: 250px;
+  height: 300px;
   width: auto;
   margin-bottom: 0px;
   display: block;
@@ -34,7 +34,7 @@ header img.header-image {
   margin-right: 10px;
   filter: drop-shadow(2px 2px 8px black);
   position: relative;
-  top: -250px;
+  top: -320px;
 }
 
 /* Slot Machine Container */
@@ -57,7 +57,7 @@ header img.header-image {
 /* Slot Background */
 .slot-machine .slot-background {
   position: absolute;
-  top: 10%;
+  top: -45px;
   left: 66.5%;
   transform: translate(-50%, -50%) scale(1.8);
   width: 100%;
@@ -65,7 +65,7 @@ header img.header-image {
   object-fit: contain;
   z-index: -1;
   pointer-events: none;
-  content: url("https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/SLOTBOX3.png?v=1744554733826");
+  content: url("https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/newslotbox.png?v=1744698617175");
 }
 
 /* Reels Container */
@@ -144,8 +144,8 @@ header img.header-image {
 #resultText {
   display: none;
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 58%;
+  left: 49.5%;
   transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.85);
   padding: 30px;
@@ -191,8 +191,8 @@ header img.header-image {
   display: none;
   font-family: 'RuneScape';
   font-size: 1.3rem;
-  color: #ff4444;
-  margin-top: 20px;
+  color: #ffffff;
+  margin-top: 10px;
   text-shadow: 2px 2px 5px black;
   width: 100%;
   text-align: center;
@@ -215,7 +215,7 @@ header img.header-image {
 .spin-button-wrapper {
   position: absolute;
   bottom: 300px; /* adjust as needed */
-  left: 50%;
+  left: 49.9%;
   transform: translateX(-50%);
   z-index: 10;
   pointer-events: none; /* only allow button inside to receive clicks */
@@ -236,12 +236,12 @@ header img.header-image {
 }
 
 #spinButton img {
-  width: 100%;
-  height: 100%;
+  width: 60%;
+  height: auto;
   object-fit: contain;
   display: block;
+  filter: drop-shadow(0 0 8px black);
 }
-
 
 #spinButton:hover {
   transform: scale(1.05);
@@ -250,8 +250,6 @@ header img.header-image {
 #spinButton:active {
   transform: scale(0.95);
 }
-
-
 
 /* 🖥 DESKTOP ONLY (≥481px) */
 @media screen and (min-width: 481px) {
@@ -267,7 +265,6 @@ header img.header-image {
 }
 
 /* Prize Showcase Wrapper */
-
 .prize-showcase-wrapper {
   width: 100%;
   overflow: hidden;
@@ -325,7 +322,7 @@ header img.header-image {
   display: flex;
   gap: 30px;
   width: max-content;
-  animation: scrollPrize 30s linear infinite;
+  animation: scrollPrize 80s linear infinite;
 }
 
 .prize-track img {
@@ -354,77 +351,61 @@ header img.header-image {
   }
 }
 
+#dropTableText {
+  font-family: 'RuneScape', sans-serif;
+  font-size: 2.5rem; /* Adjust size as needed */
+  color: #ffcc00; /* RuneScape-style yellow color */
+  text-shadow: 2px 2px 5px black; /* Add shadow for extra effect */
+  margin-bottom: 20px; /* Space between text and prize showcase */
+  position: fixed;
+  bottom: 130px; /* Adjust the position relative to other content */
+  z-index: 10; /* Make sure it appears above other content */
+  display: block;
+  text-align: center; /* Ensure it is centered */
+}
+
 /* 📱 MOBILE ONLY (≤480px) */
 @media screen and (max-width: 480px) {
   body {
     padding: 1rem;
     height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   header img.header-image {
     height: 120px;
-    margin-top: 60px;
-    margin-bottom: 20px;
-    position: relative;
-    display: block;
-    z-index: 3;
+    top: -80px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .slot-machine {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    margin-top: 40px;
+    top: -30px;
+    margin-top: 0;
     width: 100%;
-    position: relative;
-    z-index: 1;
   }
 
   .slot-machine .slot-background {
-    transform: translate(-50%, -50%) scale(1.4);
-    top: 110%; /* moved background lower */
-    left: 58%;
-    position: absolute;
-    z-index: 0;
+    transform: translate(-50%, -50%) scale(1.2);
+    top: 5%;
+    left: 50%;
   }
 
   .reels-container {
-    position: relative;
-    top: 120px; /* Adjust this to move the reels lower */
-    z-index: 2;
-  }
-
-  .reel {
-    width: 50px;
-    height: 50px;
-  }
-
-  .reel img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .spin-button-wrapper {
-    position: absolute;
-    bottom: 40px; /* move it back up */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
+    margin-top: 20px;
   }
 
   .prize-showcase-wrapper {
-    bottom: 0; /* Ensure the showcase reel sits at the bottom of the screen */
+    bottom: 0;
+    padding: 10px 0;
+  }
+
+  .prize-showcase {
+    width: 100%;
+  }
+
+  .prize-track {
+    animation: scrollPrize 60s linear infinite;
   }
 }
-
