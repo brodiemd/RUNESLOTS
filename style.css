@@ -374,7 +374,7 @@ header img.header-image {
   }
 
   header img.header-image {
-    height: 180px;
+    height: 120px;
     top: -60px;
     margin: 0 auto 10px auto;
   }
@@ -466,7 +466,7 @@ header img.header-image {
 
   #resultText {
     width: 90%;
-    top: 20%;
+    top: 55%;
     padding: 20px;
   }
 
