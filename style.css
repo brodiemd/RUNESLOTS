@@ -457,19 +457,20 @@ header img.header-image {
     bottom: 170px;
   }
 
-  .prize-showcase-wrapper {
-    position: asbolute;
-    bottom: 0;
-    padding: 10px 0;
-  }
+.prize-showcase-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  z-index: 10;
+}
 
-   .prize-showcase {
-    width: 90%;
-    max-width: 360px;
-    position: fixed;
-    bottom: 80px;
-    left: 7px;
-  }
+.prize-showcase {
+  width: 90%;
+  max-width: 360px;
+  margin: 0 auto;
+}
 
   .prize-track img {
     height: 60px;
