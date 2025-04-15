@@ -443,6 +443,7 @@ header img.header-image {
 
   #triesLeftText {
   top: 170px; /* or whatever looks good */
+  font-size: 1rem;
 }
 
 
