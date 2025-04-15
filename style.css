@@ -465,8 +465,8 @@ header img.header-image {
     width: 90%;
     max-width: 350px;
     position: fixed;
-    bottom: 5px;
-    left: 0px;
+    bottom: -10px;
+    left: 10px;
   }
 
   .prize-track img {
