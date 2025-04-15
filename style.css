@@ -458,6 +458,8 @@ header img.header-image {
   }
 
   .prize-showcase-wrapper {
+    position: fixed;
+    bottom: 0;
     padding: 10px 0;
   }
 
@@ -477,7 +479,7 @@ header img.header-image {
   #resultText {
     width: 70%;
     top: 45%;
-    left: -10%;
+    left: 20%;
     padding: 20px;
   }
 
