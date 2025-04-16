@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     '<img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/640px-Gilded_platebody_detail.webp?v=1744699648001" alt="Prize 7" />',
     '<img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Chugging_barrel_(disassembled)_detail.webp?v=1744699662148" alt="Prize 8" />',
     '<img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Armadyl_helmet_detail.webp?v=1744699654007" alt="Prize 9" />',
-    '<img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Toxic_blowpipe_(empty)_detail.webp?v=1744699667478" alt="Prize 10" />'
+    '<img src="https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Toxic_blowpipe_(empty)_detail.webp?v=1744699667478" alt="Prize 10" />',
   ];
 
   const reelImages = [
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Earth_rune_detail.webp?v=1744539398773",
     "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Fire_rune_detail.webp?v=1744539403762",
     "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Nature_rune_detail.webp?v=1744539407147",
-    "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Water_rune_detail.webp?v=1744539412908"
+    "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/1200px-Water_rune_detail.webp?v=1744539412908",
   ];
 
   let tries = 3;
@@ -30,10 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const backgroundMusic = document.getElementById("backgroundMusic");
   const deathSound = document.getElementById("deathSound");
 
-  const seaShanty = new Audio("https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/09%20Sea%20Shanty%202.mp3?v=1744534868168");
+  const seaShanty = new Audio(
+    "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/09%20Sea%20Shanty%202.mp3?v=1744534868168"
+  );
   seaShanty.loop = true;
 
-  const levelUpSound = new Audio("https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/Hitpoints_level_up_(levels_2-49).ogg?v=1744710883915");
+  const levelUpSound = new Audio(
+    "https://cdn.glitch.global/fd2c8a45-bd31-47e3-8790-296b8498bd20/Hitpoints_level_up_(levels_2-49).ogg?v=1744710883915"
+  );
 
   const confettiCanvas = document.createElement("canvas");
   confettiCanvas.id = "confetti-canvas";
@@ -45,7 +49,10 @@ document.addEventListener("DOMContentLoaded", () => {
   confettiCanvas.style.pointerEvents = "none";
   confettiCanvas.style.zIndex = "9999";
   document.body.appendChild(confettiCanvas);
-  const myConfetti = confetti.create(confettiCanvas, { resize: true, useWorker: true });
+  const myConfetti = confetti.create(confettiCanvas, {
+    resize: true,
+    useWorker: true,
+  });
 
   function triggerConfetti() {
     myConfetti({
@@ -53,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       spread: 120,
       scalar: 2.2,
       origin: { y: 0.4 },
-      colors: ['#FFD700', '#ADFF2F', '#00BFFF']
+      colors: ["#FFD700", "#ADFF2F", "#00BFFF"],
     });
   }
 
@@ -73,13 +80,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const reels = [
       document.querySelector("#reel1 img"),
       document.querySelector("#reel2 img"),
-      document.querySelector("#reel3 img")
+      document.querySelector("#reel3 img"),
     ];
 
     resultText.style.display = "none";
     triesLeftText.style.display = "none";
 
-    reels.forEach((reel) => reel.classList.remove("glow-win", "glow-lose", "shake"));
+    reels.forEach((reel) =>
+      reel.classList.remove("glow-win", "glow-lose", "shake")
+    );
 
     const spinDuration = 3000;
     const intervalDuration = 100;
@@ -103,7 +112,9 @@ document.addEventListener("DOMContentLoaded", () => {
         reelsStopped++;
 
         if (reelsStopped === 3) {
-          const allMatch = finalImages[0] === finalImages[1] && finalImages[1] === finalImages[2];
+          const allMatch =
+            finalImages[0] === finalImages[1] &&
+            finalImages[1] === finalImages[2];
 
           if (allMatch) {
             isWinner = true;
@@ -114,11 +125,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             levelUpSound.currentTime = 0;
-            levelUpSound.play().catch((e) => console.warn("Level-up sound blocked:", e));
+            levelUpSound
+              .play()
+              .catch((e) => console.warn("Level-up sound blocked:", e));
 
             levelUpSound.onended = () => {
               seaShanty.currentTime = 0;
-              seaShanty.play().catch((e) => console.warn("Sea Shanty 2 playback failed:", e));
+              seaShanty
+                .play()
+                .catch((e) => console.warn("Sea Shanty 2 playback failed:", e));
             };
 
             const prize = prizes[Math.floor(Math.random() * prizes.length)];
@@ -131,7 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
               reels.forEach((reel) => reel.classList.add("glow-win"));
               triggerConfetti();
             }, 1000); // 2 second delay
-
           } else {
             tries--;
             triesLeftText.innerHTML = `Bad luck! You have ${tries} tries left.`;
@@ -147,13 +161,17 @@ document.addEventListener("DOMContentLoaded", () => {
               deathSound.onended = () => {
                 if (backgroundMusic.paused) {
                   backgroundMusic.currentTime = resumeTime;
-                  backgroundMusic.play().catch((e) =>
-                    console.warn("Background music resume blocked:", e)
-                  );
+                  backgroundMusic
+                    .play()
+                    .catch((e) =>
+                      console.warn("Background music resume blocked:", e)
+                    );
                 }
               };
 
-              deathSound.play().catch((e) => console.warn("Death sound blocked:", e));
+              deathSound
+                .play()
+                .catch((e) => console.warn("Death sound blocked:", e));
             }
           }
         }
