@@ -136,16 +136,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 .catch((e) => console.warn("Sea Shanty 2 playback failed:", e));
             };
 
-            const prize = prizes[Math.floor(Math.random() * prizes.length)];
-
             // Delay the prize display
             setTimeout(() => {
-              document.getElementById("prizeImageContainer").innerHTML = prize;
-              document.getElementById("youWonText").innerHTML = "You won!";
-              resultText.style.display = "block";
-              reels.forEach((reel) => reel.classList.add("glow-win"));
-              triggerConfetti();
-            }, 1000); // 2 second delay
+              fetch("https://husky-trapezoidal-building.glitch.me/")
+                .then((res) => res.json())
+                .then((data) => {
+                  document.getElementById("prizeImageContainer").innerHTML =
+                    data.prize;
+                  document.getElementById("youWonText").innerHTML = "You won!";
+                  resultText.style.display = "block";
+                  reels.forEach((reel) => reel.classList.add("glow-win"));
+                  triggerConfetti();
+                })
+                .catch((err) => {
+                  console.error("Error fetching prize:", err);
+                  document.getElementById("youWonText").innerHTML =
+                    "You won! (error loading prize)";
+                  resultText.style.display = "block";
+                });
+            }, 1000);
           } else {
             tries--;
             triesLeftText.innerHTML = `Bad luck! You have ${tries} tries left.`;
