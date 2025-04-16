@@ -7,6 +7,21 @@
   
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Styles -->
+  <style>
+    /* Additional custom styles for specific animations */
+    @keyframes scrollPrize {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    .animate-scrollPrize {
+      animation: scrollPrize 20s linear infinite;
+    }
+    .filter-drop-shadow-lg {
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    }
+  </style>
 </head>
 <body class="font-sans bg-cover bg-center bg-fixed text-white text-center px-8 py-8 min-h-screen flex flex-col items-center justify-center overflow-x-hidden">
 
@@ -23,13 +38,13 @@
     <!-- Reels Container -->
     <div class="reels-container p-4 rounded-lg flex justify-center items-center relative -top-6">
       <div class="reel w-20 h-20 bg-none border-none rounded-xl flex justify-center items-center mx-2 transition-transform duration-300 ease-out">
-        <img src="https://via.placeholder.com/60" alt="Reel 1" class="w-15 h-15 object-contain">
+        <img src="https://via.placeholder.com/60" alt="Reel 1" class="w-15 h-15 object-contain" id="reel1">
       </div>
       <div class="reel w-20 h-20 bg-none border-none rounded-xl flex justify-center items-center mx-2 transition-transform duration-300 ease-out">
-        <img src="https://via.placeholder.com/60" alt="Reel 2" class="w-15 h-15 object-contain">
+        <img src="https://via.placeholder.com/60" alt="Reel 2" class="w-15 h-15 object-contain" id="reel2">
       </div>
       <div class="reel w-20 h-20 bg-none border-none rounded-xl flex justify-center items-center mx-2 transition-transform duration-300 ease-out">
-        <img src="https://via.placeholder.com/60" alt="Reel 3" class="w-15 h-15 object-contain">
+        <img src="https://via.placeholder.com/60" alt="Reel 3" class="w-15 h-15 object-contain" id="reel3">
       </div>
     </div>
   </div>
@@ -75,6 +90,21 @@
       document.querySelector('.slot-machine').classList.add('flex-col');
       document.querySelector('.spin-button-wrapper').classList.add('bottom-52');
     }
+
+    // Your JavaScript logic for spinning
+    const spinButton = document.getElementById('spinButton');
+    const reels = [document.getElementById('reel1'), document.getElementById('reel2'), document.getElementById('reel3')];
+    const resultText = document.getElementById('resultText');
+    const dropTableText = document.getElementById('dropTableText');
+    
+    spinButton.addEventListener('click', () => {
+      // Spin logic goes here...
+      resultText.classList.remove('hidden');
+      dropTableText.classList.add('hidden');
+      setTimeout(() => {
+        resultText.classList.add('hidden');
+      }, 3000);
+    });
   </script>
 
 </body>
